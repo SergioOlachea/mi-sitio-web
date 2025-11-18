@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.14",
+    "tailwindcss": "^4.1.14"
+  },
+  "script": {
+    "dev": "tailwindcss -i ./src/css/Styles.css -o ./public/output.css --watch"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "concurrently": "^9.2.1",
+    "daisyui": "^5.2.3"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run tw\" \"npm run bs\"",
+    "tw": "tailwindcss -i ./src/css/Styles.css -o ./public/output.css --watch",
+    "bs": "browser-sync start --config bs-config.js"
+  }
+}

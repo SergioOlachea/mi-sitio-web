@@ -1,0 +1,353 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+    --primary-color: rgb(111, 202, 241);
+    --secondary-color: #561F37;
+    --text-color: #000;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --hover-bg: rgba(111, 202, 241, 0.8);
+
+    --font-family: 'PT Serif', serif;
+    --font-size-base: 16px;
+    --font-size-title: clamp(24px, 2vw, 32px);
+
+    --spacing-xs: 4px;
+    --spacing-s: 8px;
+    --spacing-m: 16px;
+    --spacing-l: 24px;
+    --spacing-xl: 32px;
+
+    --border-radius-s: 5px;
+    --border-radius-m: 8px;
+    --border-radius-l: 10px;
+    --border-width: 3px;
+}
+
+body {
+    overflow-x: hidden;
+    background-image: url("/Yeyos_Baja_Fishing/public/assets/img/Imagen de WhatsApp 2025-08-19 a las 12.41.38_21042778.jpg");
+}
+
+@font-face { 
+    font-family: 'PT Serif';
+    src: url("/Yeyos_Baja_Fishing/public/assets/fonts/PTSerif-Regular.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+header {
+    background: var(--primary-color);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 0% var(--spacing-xs);
+    margin: 0;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.logo-container {
+    display: inline-block;
+    margin: 0;
+    padding: 1%;
+    vertical-align: top;
+    height: 132px;
+}
+
+.logo {
+    height: 145px;
+    width: 145px;
+    padding: 0;
+}
+
+.title_container {
+    flex: 1;
+    text-align: center;
+}
+
+.title {
+    font-family: var(--font-family);
+    font-size: var(--font-size-title);
+    margin: 0;
+    color: var(--text-color);
+}
+
+.user-container {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--spacing-s) * 2) var(--spacing-s);
+}
+
+.user-link {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    display: flex;
+    flex-direction: column;   
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.user-icon {
+    size: 50px;
+}
+
+/*panel superior*/
+.navegation {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 2fr 2fr 2fr;
+    top: 0;
+    width: 100%;
+    padding: var(--spacing-l) var(--spacing-xs);
+    margin: 0;
+    align-items: center;
+    background: white;
+}
+
+.menu-container {
+    width: auto;
+    height: auto;
+    padding: var(--spacing-xs);
+}
+
+.menu {
+    background: var(--primary-color);
+    width: 25px;
+    height: 25px;
+    border: var(--border-width) solid var(--text-color);
+    border-radius: var(--border-radius-s);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-menu {
+    width: 17px;
+    height: 17px;
+    background-image: url("/Yeyos_Baja_Fishing/public/assets/img/menu.png");
+    background-size: cover;
+}
+
+.container-menu .menu_ul {
+    display: block;
+    justify-content: center;
+    background: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+nav ul {
+    background-color: var(--primary-color);
+}
+
+nav li {
+    list-style-type: none;
+    padding-right: var(--spacing-l);
+    height: 30px;
+    color: white;
+    font-size: 19px;
+    transition: font-size 0.1s;
+}
+
+li:hover {
+    font-size: calc(19px + 2px);
+}
+
+#despleg_menu {
+    display: none;
+}
+
+.nav_menu {
+    max-height: 0;
+    overflow: hidden;
+    position: absolute;
+    transition: max-height 0.5s ease-in-out;
+    background: var(--primary-color);
+}
+
+#despleg_menu:checked ~ .nav_menu {
+    max-height: 130px;
+    position: absolute;
+}
+
+.busqueda {
+    display: grid;
+    width: auto;
+    height: auto;
+    grid-template-columns: 1fr 1fr ;
+}
+
+.busqueda input {
+    width: 311px;
+    height: 25px;
+    border: var(--border-width) solid var(--secondary-color); 
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.Buscar-icon {
+    height: 27px;
+    width: 35px;
+    border: var(--border-width) solid var(--secondary-color); 
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Buscar {
+    height: 17px;
+    width: 17px;
+    padding: var(--spacing-xs);
+    background-image: url("/Yeyos_Baja_Fishing/public/assets/img/lupa.png");
+    background-size: cover;
+}
+
+.carrito-container {
+    width: 75px;
+    height: 25px;
+    justify-items: end;
+}
+
+.carrito {
+    background: var(--primary-color);
+    width: 25px;
+    height: 25px;
+    border: var(--border-width) solid var(--secondary-color);
+    border-radius: var(--border-radius-m);
+}
+
+.carrito-icon {
+    width: 17px;
+    height: 17px;
+    padding: var(--spacing-xs);
+    background-image: url("/Yeyos_Baja_Fishing/public/assets/img/carrito.png");
+    background-size: cover;
+}
+
+.whatsapp-content {
+    width: 40px;
+    height: 25px;
+}
+
+.whatsapp {
+    display: grid;
+    grid-template-columns: 1fr 2fr ;
+}
+
+.whatsapp a {
+    padding: var(--spacing-xs);
+}
+
+.whatsapp-icon {
+    width: 25px;
+    height: 25px;
+    background-image: url("/Yeyos_Baja_Fishing/public/assets/img/whatsapp.png");
+}
+
+.facebook-content {
+    width: auto;
+    height: auto;
+}
+
+.facebook {
+    display: flex;
+    width: auto;
+}
+
+.facebook a {
+    padding: var(--spacing-xs) 0%;
+}
+
+.facebook-icon {
+    width: 25px;
+    height: 25px;
+    background-image: url("/Yeyos_Baja_Fishing/public/assets/img/facebook.png");
+}
+
+.instagram-content {
+    width: auto;
+    height: auto; 
+}
+
+.instagram {
+    display: flex;
+    width: auto;
+}
+
+.instagram a {
+    padding: var(--spacing-xs) 0%;
+}
+
+.instagram-icon {
+    width: 25px;
+    height: 25px;
+    background-image: url("/Yeyos_Baja_Fishing/public/assets/img/instagram.png");
+}
+
+/*Carrusel*/
+.carousel {
+    width: 100%;
+    height: auto;
+    padding: 0% var(--spacing-xs);
+}
+
+.carousel img {
+    width: 100%;
+    height: 270px;
+}
+
+/*Cartas contenidos*/
+.cards-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+    gap: var(--spacing-l); 
+    flex-wrap: wrap; 
+    margin: var(--spacing-l);
+}
+
+.card {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    border-radius: var(--border-radius-l);
+    overflow: hidden;
+    text-decoration: none;
+    border: 4px solid var(--secondary-color); 
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: transform 0.2s ease-in-out;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-text {
+    position: absolute;
+    bottom: 40%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background: var(--hover-bg); 
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: bold;
+    padding: var(--spacing-s) 0;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
