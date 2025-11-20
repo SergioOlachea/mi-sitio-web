@@ -85,7 +85,7 @@ define('BASE_URL', '/Yeyos_Baja_Fishing');
 
         <div class="cards-content">
 
-            <a href="carretes.html" class="card">
+            <a href="/src/views/carretes.php" class="card">
                 <img src="assets/img/carretes.jpg" alt="Carretes">
                 <div class="card-text">Carretes</div>
             </a>
@@ -107,6 +107,68 @@ define('BASE_URL', '/Yeyos_Baja_Fishing');
 
         </div>
 
+    </div>
+
+    <div class="mas-vendidos-section" style="padding: 40px 0; background: #ffffff;">
+        <h2 style="text-align:center; font-size: 32px; font-weight: 700; margin-bottom: 30px;">
+            MÁS VENDIDOS
+        </h2>
+
+        <div class="ventas-grid" 
+            style="display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 25px; width: 90%; margin: auto;">
+
+
+            <div class="venta-card" 
+                style="background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align:center;">
+                <img src="https://tiendapescamardealboran.es/wp-content/uploads/2023/02/shimano-socorro-sw-6000-scaled-1-600x800.jpg"
+                    alt="Carrete Shimano Socorro"
+                    style="width: 100%; height: 200px; object-fit: contain;">
+                <h3 style="margin-top: 10px;">Carrete Shimano Socorro SW 6000</h3>
+                <p style="font-size: 14px; color:#555;">Carrete ideal para pesca en mar con sistema de freno suave y resistente.</p>
+                <p style="color:red; font-size: 20px; font-weight: bold;">$4,999.00</p>
+            </div>
+
+            <div class="venta-card" 
+                style="background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align:center;">
+                <img src="https://elsenuelo.cl/web/wp-content/uploads/2019/07/WHU.jpg"
+                    alt="Señuelo Rapala X-Rap"
+                    style="width: 100%; height: 200px; object-fit: contain;">
+                <h3 style="margin-top: 10px;">Señuelo Rapala X-Rap Saltwater</h3>
+                <p style="font-size: 14px; color:#555;">Señuelo flotante de gran acción ideal para jurel, pargo y pez gallo.</p>
+                <p style="color:red; font-size: 20px; font-weight: bold;">$289.00</p>
+            </div>
+
+            <div class="venta-card" 
+                style="background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align:center;">
+                <img src="https://wiredboats.co.uk/wp-content/uploads/2021/10/ugly-stik-gx2-2-piece-spin_handle.jpg"
+                    alt="Caña Ugly Stik GX2"
+                    style="width: 100%; height: 200px; object-fit: contain;">
+                <h3 style="margin-top: 10px;">Caña Ugly Stik GX2 7ft</h3>
+                <p style="font-size: 14px; color:#555;">Caña resistente de grafito y fibra de vidrio para pesca mediana y pesada.</p>
+                <p style="color:red; font-size: 20px; font-weight: bold;">$1,250.00</p>
+            </div>
+
+            <div class="venta-card" 
+                style="background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align:center;">
+                <img src="https://m.media-amazon.com/images/I/81wRdgK6NtL._AC_SX679_.jpg"
+                    alt="Protector solar buff"
+                    style="width: 100%; height: 200px; object-fit: contain;">
+                <h3 style="margin-top: 10px;">Protector de Cara AFTCO Samurai</h3>
+                <p style="font-size: 14px; color:#555;">Cubrebocas UV 50+ para pesca deportiva y actividades al aire libre.</p>
+                <p style="color:red; font-size: 20px; font-weight: bold;">$399.00</p>
+            </div>
+
+            <div class="venta-card" 
+                style="background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align:center;">
+                <img src="https://th.bing.com/th/id/R.a3a8e4346f5e92ade51d3fa59a393d70?rik=sSmrasdXwNEWhg&riu=http%3a%2f%2fwww.fullpescasa.com%2fwp-content%2fuploads%2f2021%2f05%2fPOWER-PRO2.jpg&ehk=7W4kT9VRrq2kI%2b7kLDts9wfgRq6tYQS5HeJiSFoJjxE%3d&risl=&pid=ImgRaw&r=0"
+                    alt="Hilo de pesca PowerPro"
+                    style="width: 100%; height: 200px; object-fit: contain;">
+                <h3 style="margin-top: 10px;">Trenzado PowerPro 50 lb</h3>
+                <p style="font-size: 14px; color:#555;">Línea trenzada de alta resistencia para pesca deportiva en mar.</p>
+                <p style="color:red; font-size: 20px; font-weight: bold;">$720.00</p>
+            </div>
+
+        </div>
     </div>
 
     <?php include $BASE_PATH . "/src/layouts/footer.php"; ?>
