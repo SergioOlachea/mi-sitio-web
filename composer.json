@@ -1,0 +1,17 @@
+{
+    "name": "yonatan.deleon/mi-sitio-web",
+    "autoload": {
+        "psr-4": {
+            "YonatanDeleon\\MiSitioWeb\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yonatanaguirre16",
+            "email": "yaguirre_16@alu.uabcs.mx"
+        }
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

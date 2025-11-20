@@ -1,6 +1,7 @@
 <?php 
 
 $config = require __DIR__ . '/../config/config.php';
+require __DIR__.'/../config/database.php';
 
 // Constantes para rutas absolutas del sistema
 define('BASE_PATH', $config['base_url']);        // http://localhost/yeyos_fishing/
@@ -71,6 +72,23 @@ function getContactInfo() {
             'icon'   => ASSETS_URL . 'instagram.png'
         ]
     ];
+}
+
+function getCarretes() {
+    $pdo = getPDO();
+
+    try {
+        $sql = "SELECT * FROM producto";
+
+        $stmt = $pdo->query($sql);
+
+        $carretes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $carretes;
+    }catch (PDOException $e) {
+        error_log("Error al consultar la base de datoso: ". $e->getMessage());
+        return [];
+    }
 }
 
 ?>

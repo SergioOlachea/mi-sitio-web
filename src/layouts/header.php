@@ -1,3 +1,7 @@
+<?php
+require __DIR__.'/../../helpers/functions.php';
+?>
+
 <header class="header">
 
     <link rel="stylesheet" href="src/css/Styles.css">
