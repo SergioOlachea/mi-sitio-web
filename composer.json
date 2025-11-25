@@ -2,7 +2,8 @@
     "name": "yonatan.deleon/mi-sitio-web",
     "autoload": {
         "psr-4": {
-            "YonatanDeleon\\MiSitioWeb\\": "src/"
+            "YonatanDeleon\\MiSitioWeb\\": "src/",
+            "App\\": "src/"
         }
     },
     "authors": [

@@ -1,11 +1,9 @@
 <?php 
 
-$config = require __DIR__ . '/../config/config.php';
 require __DIR__.'/../config/database.php';
-
+$config = require __DIR__ . '/../config/config.php';
 // Constantes para rutas absolutas del sistema
 define('BASE_PATH', $config['base_url']);        // http://localhost/yeyos_fishing/
-define('PUBLIC_URL', $config['public_url']);     // http://localhost/yeyos_fishing/public/
 define('ASSETS_URL', $config['assets_url']);     // http://localhost/yeyos_fishing/public/assets/img/
 
 function getCategorias() {
@@ -89,6 +87,58 @@ function getCarretes() {
         error_log("Error al consultar la base de datoso: ". $e->getMessage());
         return [];
     }
+}
+
+function view($template, $data = [])
+{
+    // Convierte cada clave del array en una variable
+    extract($data);
+
+    // Rutas absolutas
+    $viewsPath = __DIR__ . '/../views/';
+    $layoutPath = $viewsPath . 'layouts/';
+
+    // Header
+    require $layoutPath . 'header.php';
+
+    // Vista solicitada
+    require $viewsPath . $template . '.php';
+
+    // Footer
+    require $layoutPath . 'footer.php';
+}
+
+function redirect($path) {
+    header('Location: '.BASE_PATH.'/'.$path);
+    exit;
+}
+
+function uploadImage($file, $folder) {
+    // Si no hay archivo o hubo error, no guardar nada
+    if (!isset($file) || $file['error'] !== UPLOAD_ERR_OK) {
+        return null;
+    }
+
+    // Ruta base a public/assets/img
+    $uploadDir = __DIR__ . "/../../public/assets/$folder/";
+
+    // Crear carpeta si no existe
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0777, true);
+    }
+
+    // Extensión real
+    $originalName = $file['name'];
+    $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+
+    // Nombre único
+    $imageName = uniqid($folder . '_') . '.' . $extension;
+
+    // Mover archivo
+    $tmpPath = $file['tmp_name'];
+    move_uploaded_file($tmpPath, $uploadDir . $imageName);
+
+    return $imageName;
 }
 
 ?>
