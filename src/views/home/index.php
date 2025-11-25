@@ -84,7 +84,7 @@ define('BASE_URL', '/Yeyos_Baja_Fishing');
 
         <div class="cards-content">
 
-            <a href="/src/views/carretes.php" class="card">
+            <a href="<?=BASE_PATH?>/carretes" class="card">
                 <img src="assets/img/carretes.jpg" alt="Carretes">
                 <div class="card-text">Carretes</div>
             </a>

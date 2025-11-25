@@ -7,8 +7,8 @@ $dotenv->load();
 
 return [
 
-    'base_url'   => 'http://localhost:8080',
-    'assets_url' => 'http://localhost:8080/public/assets',
+    'base_url'   => $_ENV['APP_URL'],
+    'assets_url' => $_ENV['APP_URL'].'/assets',
     'db' =>[
         'connection' => $_ENV['DB_CONNECTION'],
         'host' => $_ENV['DB_HOST'],
