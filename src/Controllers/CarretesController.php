@@ -2,19 +2,19 @@
 
 namespace App\Controllers;
 
-use App\Models\Carretes;
+use App\Models\Producto;
 
 class CarretesController {
 
     public function index() {
-        $carretesModel = new Carretes(getPDO());
+        $carretesModel = new Producto(getPDO());
         $carretes = $carretesModel->all(); 
         
         return view('public/carretes/carretes.index', ['carretes' => $carretes]);
     }
 
     public function adminIndex() {
-        $carretesModel = new Carretes(getPDO());
+        $carretesModel = new Producto(getPDO());
         $carretes = $carretesModel->all(); 
         
         return view('admin/carretes/index', ['carretes' => $carretes]);
