@@ -38,67 +38,21 @@ try {
 
 <body class="bg-gray-100 text-[var(--text-color)]">
     
-     <div class="navegation">
-        <div class="container-menu">
-            <input type="checkbox" id="despleg_menu">
-
-            <label for="despleg_menu" class="menu">
-                <img src="assets/img/menu.png" class="icon-menu">
-            </label>
-
-            <nav class="nav_menu">
-                <ul class="menu_ul">
-                    <li><a href="<?=BASE_PATH?>/home">Inicio</a></li>
-                    <li><a href="pedidos.html">Pedidos</a></li>
-                    <li><a href="cañas.html">Cañas</a></li>
-                    <li><a href="<?=BASE_PATH?>/carretes">Carretes</a></li>
-                    <li><a href="señuelos.html">Señuelos</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="busqueda">
-
-            <input id="busqueda-txt" class="input-text" type="text" placeholder="Buscar"required>
-           
-            <div class="Buscar-icon">
-                <img src="assets/img/busqueda-de-lupa.png" class="Buscar">
-            </div>
-        </div>
-
-        <div class="carrito-container">
-            <div class="carrito">
-                <img src="assets/img/carrito-de-compras.png" class="carrito-icon">
-            </div>
-        </div>
-
-        <div class="whatsapp-content">
-            <div class="whatsapp">
-                <img src="assets/img/whatsapp.png" class="whatsapp-icon">
-                <a href="whatsapp.com">6121771933</a>
-            </div>
-        </div>
-
-        <div class="facebook-content">
-            <div class="facebook">
-                <img src="assets/img/facebook.png" class="facebook-icon">
-                <a href="facebook.com">Yeyo´s_Baja_Fishing</a>
-            </div>
-        </div>
-
-        <div class="instagram-content">
-            <div class="instagram">
-                <img src="assets/img/instagram.png" class="instagram-icon">
-                <a href="instagram.com">Yeyo´s_Baja_Fishing</a>
-            </div>
-        </div>
-    </div>
 
     <section class="bg-gray-100 py-16">
         <div class="max-w-7xl mx-auto px-6">
             
-            <h1 class="text-3xl font-bold text-center mb-12 text-blue-800">
-                Carretes
-            </h1>
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12 border-b pb-4 border-gray-300">
+                <h1 class="text-3xl font-bold text-blue-800">
+                    Carretes
+                </h1>
+                
+                <a href="" 
+                   class="mt-4 md:mt-0 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition flex items-center gap-2 shadow-md">
+            
+                   Agregar Nuevo
+                </a>
+            </div>
 
             <?php if (empty($carretes)) : ?>
                 <div class="text-center py-10">
@@ -108,7 +62,7 @@ try {
 
                 <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                     <?php foreach($carretes as $carrete) : ?>
-                        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full">
                             
                             <?php 
                                 $imageUrl = (isset($carrete->imagen_url) && $carrete->imagen_url) ? htmlspecialchars($carrete->imagen_url) : 'placeholder_carrete.jpg';
@@ -119,21 +73,27 @@ try {
                                  alt="<?= htmlspecialchars($carrete->nombre) ?>" 
                                  class="w-full h-64 object-cover">
                             
-                            <div class="p-6">
+                            <div class="p-6 flex flex-col flex-grow">
                                 <h3 class="text-xl font-semibold mb-2">
                                     <?= htmlspecialchars($carrete->nombre) ?>
                                 </h3>
                                 
-                                <p class="text-gray-600 text-sm text-justify">
+                                <p class="text-gray-600 text-sm text-justify flex-grow">
                                     <?= htmlspecialchars($carrete->descripcion) ?>
                                 </p>
                                 
                                 <p class="text-lg font-bold text-gray-800 mt-2 mb-4">$<?= number_format($carrete->precio, 2) ?></p>
 
-                                <div class="flex justify-center mt-4">
-                                    <a href="<?= (defined('SRC_PATH') ? SRC_PATH : '') ?>/views/careers/careers.details.php?careerId=<?= $carrete->id_producto ?>" 
-                                       class="bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-800 transition">
-                                        Ver más
+                                <div class="flex gap-3 mt-4">
+                                    <a href="<?= (defined('SRC_PATH') ? SRC_PATH : '') ?>/views/careers/careers.edit.php?careerId=<?= $carrete->id_producto ?>" 
+                                       class="flex-1 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition text-center font-medium">
+                                        Editar
+                                    </a>
+
+                                    <a href="<?= (defined('SRC_PATH') ? SRC_PATH : '') ?>/controllers/carretesController.php?action=delete&id=<?= $carrete->id_producto ?>" 
+                                        class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition text-center font-medium"
+                                        onclick="return confirm('¿Estás seguro de que deseas eliminar este carrete?');">
+                                        Eliminar
                                     </a>
                                 </div>
                             </div>

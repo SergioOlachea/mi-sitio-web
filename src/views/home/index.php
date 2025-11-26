@@ -1,9 +1,19 @@
 <?php
-// Ruta absoluta del proyecto
-$BASE_PATH = dirname(__DIR__);
+if (!defined('ASSETS_PATH')) {
+    define('ASSETS_PATH', '/assets'); 
+}
 
-// Ruta base para URLs
-define('BASE_URL', '/Yeyos_Baja_Fishing');
+if (!defined('SRC_PATH')) {
+    define('SRC_PATH', '/');       
+}
+
+$assetsPath = ASSETS_PATH;
+$srcPath = SRC_PATH;
+
+
+if (!defined('BASE_URL')) {
+    define('BASE_URL', '/Yeyos_Baja_Fishing'); 
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,163 +21,112 @@ define('BASE_URL', '/Yeyos_Baja_Fishing');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="../src/css/Styles.css">
-
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <title>Yeyo´s Baja Fishing</title>
+
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-100 min-h-screen">
+    <?php 
+    $rutaHEader = __DIR__ . '/../../layouts/header.php';
+    ?>
 
+    <div class="content max-w-7xl mx-auto py-6 px-4">
 
-    <div class="navegation">
-        <div class="container-menu">
-            <input type="checkbox" id="despleg_menu">
-
-            <label for="despleg_menu" class="menu">
-                <img src="assets/img/menu.png" class="icon-menu">
-            </label>
-
-            <nav class="nav_menu">
-                <ul class="menu_ul">
-                    <li><a href="pedidos.html">Pedidos</a></li>
-                    <li><a href="cañas.html">Cañas</a></li>
-                    <li><a href="<?=BASE_PATH?>/carretes">Carretes</a></li>
-                    <li><a href="señuelos.html">Señuelos</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="busqueda">
-
-            <input id="busqueda-txt" class="input-text" type="text" placeholder="Buscar"required>
-           
-            <div class="Buscar-icon">
-                <img src="assets/img/busqueda-de-lupa.png" class="Buscar">
-            </div>
-        </div>
-
-        <div class="carrito-container">
-            <div class="carrito">
-                <img src="assets/img/carrito-de-compras.png" class="carrito-icon">
-            </div>
-        </div>
-
-        <div class="whatsapp-content">
-            <div class="whatsapp">
-                <img src="assets/img/whatsapp.png" class="whatsapp-icon">
-                <a href="whatsapp.com">6121771933</a>
-            </div>
-        </div>
-
-        <div class="facebook-content">
-            <div class="facebook">
-                <img src="assets/img/facebook.png" class="facebook-icon">
-                <a href="facebook.com">Yeyo´s_Baja_Fishing</a>
-            </div>
-        </div>
-
-        <div class="instagram-content">
-            <div class="instagram">
-                <img src="assets/img/instagram.png" class="instagram-icon">
-                <a href="instagram.com">Yeyo´s_Baja_Fishing</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="content">
-
-        <div class="carousel">
+        <!-- Banner Promocional -->
+        <div class="carousel mb-8 rounded-lg overflow-hidden shadow-lg">
             <div class="carousel-content">
-                <img src="assets/img/Captura de pantalla 2025-08-19 093226.png" class="promo1">
+                <!-- CRÍTICO: Usamos $assetsPath para ruta ABSOLUTA -->
+                <img src="<?= $assetsPath ?>/img/Captura de pantalla 2025-08-19 093226.png" class="promo1 w-full h-auto object-cover" alt="Promoción">
             </div>
         </div>
 
-        <div class="cards-content">
-
-            <a href="<?=BASE_PATH?>/carretes" class="card">
-                <img src="assets/img/carretes.jpg" alt="Carretes">
-                <div class="card-text">Carretes</div>
+        <!-- Cards de Categorías Principales -->
+        <div class="cards-content grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+            
+            <a href="<?= $srcPath ?>carretes" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                <img src="<?= $assetsPath ?>/img/carretes.jpg" alt="Carretes" class="w-full h-32 object-cover mb-3 rounded-md">
+                <div class="card-text font-semibold text-gray-800">Carretes</div>
             </a>
 
-            <a href="/src/views/señuelos.html" class="card">
-                <img src="assets/img/señiuelos.webp" alt="Señuelos">
-                <div class="card-text">Señuelos</div>
+            <a href="<?= $srcPath ?>señuelos" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                <img src="<?= $assetsPath ?>/img/señiuelos.webp" alt="Señuelos" class="w-full h-32 object-cover mb-3 rounded-md">
+                <div class="card-text font-semibold text-gray-800">Señuelos</div>
             </a>
 
-            <a href="cañas.html" class="card">
-                <img src="assets/img/cañas.webp" alt="Cañas">
-                <div class="card-text">Cañas</div>
+            <a href="<?= $srcPath ?>cañas.html" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                <img src="<?= $assetsPath ?>/img/cañas.webp" alt="Cañas" class="w-full h-32 object-cover mb-3 rounded-md">
+                <div class="card-text font-semibold text-gray-800">Cañas</div>
             </a>
 
-            <a href="accesorios.html" class="card">
-                <img src="assets/img/OIP.webp" alt="Accesorios">
-                <div class="card-text">Accesorios</div>
+            <a href="<?= $srcPath ?>accesorios.html" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+                <img src="<?= $assetsPath ?>/img/OIP.webp" alt="Accesorios" class="w-full h-32 object-cover mb-3 rounded-md">
+                <div class="card-text font-semibold text-gray-800">Accesorios</div>
             </a>
 
         </div>
 
-    </div>
+        <!-- Productos Más Vendidos -->
+        <div class="mas-vendidos-section bg-white p-6 rounded-xl shadow-2xl">
+            <h2 class="text-center text-3xl font-extrabold text-blue-800 mb-8">
+                MÁS VENDIDOS
+            </h2>
 
-    <div class="mas-vendidos-section" style="padding: 40px 0; background: #ffffff;">
-        <h2 style="text-align:center; font-size: 32px; font-weight: 700; margin-bottom: 30px;">
-            MÁS VENDIDOS
-        </h2>
+            <div class="ventas-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
 
-        <div class="ventas-grid" 
-            style="display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 25px; width: 90%; margin: auto;">
+                <!-- Producto 1: Carrete Shimano -->
+                <div class="venta-card p-4 border border-gray-100 rounded-xl hover:shadow-lg transition-shadow duration-300 text-center">
+                    <img src="https://tiendapescamardealboran.es/wp-content/uploads/2023/02/shimano-socorro-sw-6000-scaled-1-600x800.jpg"
+                        alt="Carrete Shimano Socorro"
+                        class="w-full h-48 object-contain mb-3">
+                    <h3 class="mt-2 font-semibold text-gray-900 truncate">Carrete Shimano Socorro SW 6000</h3>
+                    <p class="text-sm text-gray-500 mb-2">Carrete ideal para pesca en mar con sistema de freno suave y resistente.</p>
+                    <p class="text-xl font-extrabold text-red-600">$4,999.00</p>
+                </div>
 
+                <!-- Producto 2: Señuelo Rapala -->
+                <div class="venta-card p-4 border border-gray-100 rounded-xl hover:shadow-lg transition-shadow duration-300 text-center">
+                    <img src="https://elsenuelo.cl/web/wp-content/uploads/2019/07/WHU.jpg"
+                        alt="Señuelo Rapala X-Rap"
+                        class="w-full h-48 object-contain mb-3">
+                    <h3 class="mt-2 font-semibold text-gray-900 truncate">Señuelo Rapala X-Rap Saltwater</h3>
+                    <p class="text-sm text-gray-500 mb-2">Señuelo flotante de gran acción ideal para jurel, pargo y pez gallo.</p>
+                    <p class="text-xl font-extrabold text-red-600">$289.00</p>
+                </div>
 
-            <div class="venta-card" 
-                style="background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align:center;">
-                <img src="https://tiendapescamardealboran.es/wp-content/uploads/2023/02/shimano-socorro-sw-6000-scaled-1-600x800.jpg"
-                    alt="Carrete Shimano Socorro"
-                    style="width: 100%; height: 200px; object-fit: contain;">
-                <h3 style="margin-top: 10px;">Carrete Shimano Socorro SW 6000</h3>
-                <p style="font-size: 14px; color:#555;">Carrete ideal para pesca en mar con sistema de freno suave y resistente.</p>
-                <p style="color:red; font-size: 20px; font-weight: bold;">$4,999.00</p>
+                <!-- Producto 3: Caña Ugly Stik -->
+                <div class="venta-card p-4 border border-gray-100 rounded-xl hover:shadow-lg transition-shadow duration-300 text-center">
+                    <img src="https://wiredboats.co.uk/wp-content/uploads/2021/10/ugly-stik-gx2-2-piece-spin_handle.jpg"
+                        alt="Caña Ugly Stik GX2"
+                        class="w-full h-48 object-contain mb-3">
+                    <h3 class="mt-2 font-semibold text-gray-900 truncate">Caña Ugly Stik GX2 7ft</h3>
+                    <p class="text-sm text-gray-500 mb-2">Caña resistente de grafito y fibra de vidrio para pesca mediana y pesada.</p>
+                    <p class="text-xl font-extrabold text-red-600">$1,250.00</p>
+                </div>
+
+                <!-- Producto 4: Protector Solar -->
+                <div class="venta-card p-4 border border-gray-100 rounded-xl hover:shadow-lg transition-shadow duration-300 text-center">
+                    <img src="https://m.media-amazon.com/images/I/81wRdgK6NtL._AC_SX679_.jpg"
+                        alt="Protector solar buff"
+                        class="w-full h-48 object-contain mb-3">
+                    <h3 class="mt-2 font-semibold text-gray-900 truncate">Protector de Cara AFTCO Samurai</h3>
+                    <p class="text-sm text-gray-500 mb-2">Cubrebocas UV 50+ para pesca deportiva y actividades al aire libre.</p>
+                    <p class="text-xl font-extrabold text-red-600">$399.00</p>
+                </div>
+
+                <!-- Producto 5: Trenzado PowerPro -->
+                <div class="venta-card p-4 border border-gray-100 rounded-xl hover:shadow-lg transition-shadow duration-300 text-center">
+                    <img src="https://th.bing.com/th/id/R.a3a8e4346f5e92ade51d3fa59a393d70?rik=sSmrasdXwNEWhg&riu=http%3a%2f%2fwww.fullpescasa.com%2fwp-content%2fuploads%2f2021%2f05%2fPOWER-PRO2.jpg&ehk=7W4kT9VRrq2kI%2b7kLDts9wfgRq6tYQS5HeJiSFoJjxE%3d&risl=&pid=ImgRaw&r=0"
+                        alt="Hilo de pesca PowerPro"
+                        class="w-full h-48 object-contain mb-3">
+                    <h3 class="mt-2 font-semibold text-gray-900 truncate">Trenzado PowerPro 50 lb</h3>
+                    <p class="text-sm text-gray-500 mb-2">Línea trenzada de alta resistencia para pesca deportiva en mar.</p>
+                    <p class="text-xl font-extrabold text-red-600">$720.00</p>
+                </div>
+
             </div>
-
-            <div class="venta-card" 
-                style="background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align:center;">
-                <img src="https://elsenuelo.cl/web/wp-content/uploads/2019/07/WHU.jpg"
-                    alt="Señuelo Rapala X-Rap"
-                    style="width: 100%; height: 200px; object-fit: contain;">
-                <h3 style="margin-top: 10px;">Señuelo Rapala X-Rap Saltwater</h3>
-                <p style="font-size: 14px; color:#555;">Señuelo flotante de gran acción ideal para jurel, pargo y pez gallo.</p>
-                <p style="color:red; font-size: 20px; font-weight: bold;">$289.00</p>
-            </div>
-
-            <div class="venta-card" 
-                style="background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align:center;">
-                <img src="https://wiredboats.co.uk/wp-content/uploads/2021/10/ugly-stik-gx2-2-piece-spin_handle.jpg"
-                    alt="Caña Ugly Stik GX2"
-                    style="width: 100%; height: 200px; object-fit: contain;">
-                <h3 style="margin-top: 10px;">Caña Ugly Stik GX2 7ft</h3>
-                <p style="font-size: 14px; color:#555;">Caña resistente de grafito y fibra de vidrio para pesca mediana y pesada.</p>
-                <p style="color:red; font-size: 20px; font-weight: bold;">$1,250.00</p>
-            </div>
-
-            <div class="venta-card" 
-                style="background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align:center;">
-                <img src="https://m.media-amazon.com/images/I/81wRdgK6NtL._AC_SX679_.jpg"
-                    alt="Protector solar buff"
-                    style="width: 100%; height: 200px; object-fit: contain;">
-                <h3 style="margin-top: 10px;">Protector de Cara AFTCO Samurai</h3>
-                <p style="font-size: 14px; color:#555;">Cubrebocas UV 50+ para pesca deportiva y actividades al aire libre.</p>
-                <p style="color:red; font-size: 20px; font-weight: bold;">$399.00</p>
-            </div>
-
-            <div class="venta-card" 
-                style="background: #fff; padding: 15px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align:center;">
-                <img src="https://th.bing.com/th/id/R.a3a8e4346f5e92ade51d3fa59a393d70?rik=sSmrasdXwNEWhg&riu=http%3a%2f%2fwww.fullpescasa.com%2fwp-content%2fuploads%2f2021%2f05%2fPOWER-PRO2.jpg&ehk=7W4kT9VRrq2kI%2b7kLDts9wfgRq6tYQS5HeJiSFoJjxE%3d&risl=&pid=ImgRaw&r=0"
-                    alt="Hilo de pesca PowerPro"
-                    style="width: 100%; height: 200px; object-fit: contain;">
-                <h3 style="margin-top: 10px;">Trenzado PowerPro 50 lb</h3>
-                <p style="font-size: 14px; color:#555;">Línea trenzada de alta resistencia para pesca deportiva en mar.</p>
-                <p style="color:red; font-size: 20px; font-weight: bold;">$720.00</p>
-            </div>
-
         </div>
+
     </div>
 
 </body>
