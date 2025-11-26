@@ -140,4 +140,34 @@ class Producto {
             return false;
         }
     }
+
+    public function getByCategory($categoria) {
+        try {
+            // Filtramos por la columna categoria
+            $sql = "SELECT * FROM producto WHERE categoria = :categoria";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute(['categoria' => $categoria]);
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $productos = [];
+
+            foreach($rows as $row) {
+                $producto = new Producto($this->pdo);
+                // Mapeamos los datos igual que en el método all()
+                $producto->id = $row['id_producto'];
+                $producto->nombre = $row['nombre'];
+                $producto->descripcion = $row['descripcion'];
+                $producto->precio = $row['precio'];
+                $producto->stock = $row['stock'];
+                $producto->categoria = $row['categoria'];
+                $producto->imagen_url = $row['imagen_url'];
+                $productos[] = $producto;
+            }
+
+            return $productos;
+        } catch (PDOException $e) {
+            error_log("Error al filtrar por categoría: ". $e->getMessage());
+            return [];
+        }
+    }
 }

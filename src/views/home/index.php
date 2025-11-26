@@ -32,7 +32,7 @@ define('BASE_URL', '/Yeyos_Baja_Fishing');
                 <ul class="menu_ul">
                     <li><a href="pedidos.html">Pedidos</a></li>
                     <li><a href="cañas.html">Cañas</a></li>
-                    <li><a href="carretes.html">Carretes</a></li>
+                    <li><a href="<?=BASE_PATH?>/carretes">Carretes</a></li>
                     <li><a href="señuelos.html">Señuelos</a></li>
                 </ul>
             </nav>

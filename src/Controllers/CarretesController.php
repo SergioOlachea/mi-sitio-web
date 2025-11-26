@@ -32,14 +32,14 @@ class CarretesController {
     }
 
     public function show($id) {
-        $carretesModel = new Carretes(getPDO());
+        $carretesModel = new Producto(getPDO());
         $carretes = $carretesModel->find($id);
         return view('public/carretes/carretes.details', ['carretes' => $carretes]);
     }
 
     public function store($data, $files) {
 
-        $carretes = new Carretes(getPDO());
+        $carretes = new Producto(getPDO());
 
         $imageName = uploadImage($files['image'], 'img');
 

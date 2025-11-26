@@ -23,12 +23,16 @@
     --color-pink-100: oklch(94.8% 0.028 342.258);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-100: oklch(96.7% 0.003 264.542);
+    --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-600: oklch(44.6% 0.03 256.802);
+    --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-7xl: 80rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
@@ -605,11 +609,17 @@
   .mx-auto {
     margin-inline: auto;
   }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
+  }
+  .mb-4 {
+    margin-bottom: calc(var(--spacing) * 4);
   }
   .mb-12 {
     margin-bottom: calc(var(--spacing) * 12);
@@ -814,6 +824,9 @@
   .py-9 {
     padding-block: calc(var(--spacing) * 9);
   }
+  .py-10 {
+    padding-block: calc(var(--spacing) * 10);
+  }
   .py-16 {
     padding-block: calc(var(--spacing) * 16);
   }
@@ -833,6 +846,10 @@
   .text-3xl {
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
   }
   .text-sm {
     font-size: var(--text-sm);
@@ -859,8 +876,14 @@
   .text-blue-800 {
     color: var(--color-blue-800);
   }
+  .text-gray-500 {
+    color: var(--color-gray-500);
+  }
   .text-gray-600 {
     color: var(--color-gray-600);
+  }
+  .text-gray-800 {
+    color: var(--color-gray-800);
   }
   .text-white {
     color: var(--color-white);
@@ -1040,8 +1063,8 @@ header {
   justify-content: center;
 }
 .icon-menu {
-  width: 17px;
-  height: 17px;
+  width: 20px;
+  height: 20px;
   background-image: url("/Yeyos_Baja_Fishing/public/assets/img/menu.png");
   background-size: cover;
 }

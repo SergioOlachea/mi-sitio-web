@@ -76,7 +76,7 @@ function getCarretes() {
     $pdo = getPDO();
 
     try {
-        $sql = "SELECT * FROM producto";
+        $sql = "SELECT * FROM producto WHERE categoria = 'carretes'";
 
         $stmt = $pdo->query($sql);
 
