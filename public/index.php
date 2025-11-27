@@ -32,22 +32,34 @@ if($route === 'admin/carretes') {
     return (new CarretesController())->adminIndex();
 }
 
-//Crear carrera, mostrar formulario
-if($route === 'admin/carretes/create') {
+//Crear carrete, mostrar formulario
+if ($route === 'admin/carretes/create') {
 
-    if($method === 'POST') {
+    if ($method === 'POST') {
         return (new CarretesController())->store($_POST, $_FILES);
     }
 
     return (new CarretesController())->form();
 }
 
-//Editar carrera, mostrar formulario
+// Editar carrete
 if (preg_match('#^admin/carretes/edit/(\d+)$#', $route, $matches)) {
-    $careerId = filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT);
+    $id = (int)$matches[1];
 
-    if($method ===  'GET') {
-        return (new CarretesController())->form($careerId);
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        return (new App\Controllers\CarretesController())->update($id, $_POST, $_FILES);
+    }
+
+    // GET → mostrar formulario
+    return (new App\Controllers\CarretesController())->form($id);
+}
+
+
+//Eliminar carrete
+if (preg_match('#^admin/carretes/delete/(\d+)$#', $route, $matches)) {
+    $carreteId = filter_var($matches[1], FILTER_SANITIZE_NUMBER_INT);
+    if ($method === 'POST' || $method === 'GET') {
+        return (new CarretesController())->delete($carreteId);
     }
 }
 

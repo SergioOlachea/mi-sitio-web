@@ -47,11 +47,10 @@ try {
                     Carretes
                 </h1>
                 
-                <a href="" 
-                   class="mt-4 md:mt-0 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition flex items-center gap-2 shadow-md">
-            
-                   Agregar Nuevo
-                </a>
+            <a href="index.php?route=admin/carretes/create"
+            class="mt-4 md:mt-0 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition flex items-center gap-2 shadow-md">
+                Agregar Nuevo
+            </a>
             </div>
 
             <?php if (empty($carretes)) : ?>
@@ -85,16 +84,16 @@ try {
                                 <p class="text-lg font-bold text-gray-800 mt-2 mb-4">$<?= number_format($carrete->precio, 2) ?></p>
 
                                 <div class="flex gap-3 mt-4">
-                                    <a href="<?= (defined('SRC_PATH') ? SRC_PATH : '') ?>/views/careers/careers.edit.php?careerId=<?= $carrete->id_producto ?>" 
-                                       class="flex-1 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition text-center font-medium">
-                                        Editar
-                                    </a>
+                                <a href="index.php?route=admin/carretes/edit/<?= $carrete->id?>"
+                                class="flex-1 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition text-center font-medium">
+                                    Editar
+                                </a>
+                                <a href="index.php?route=admin/carretes/delete/<?= $carrete->id?>"
+                                class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition text-center font-medium"
+                                onclick="return confirm('¿Estás seguro de que deseas eliminar este carrete?');">
+                                    Eliminar
+                                </a>
 
-                                    <a href="<?= (defined('SRC_PATH') ? SRC_PATH : '') ?>/controllers/carretesController.php?action=delete&id=<?= $carrete->id_producto ?>" 
-                                        class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition text-center font-medium"
-                                        onclick="return confirm('¿Estás seguro de que deseas eliminar este carrete?');">
-                                        Eliminar
-                                    </a>
                                 </div>
                             </div>
                         </div>

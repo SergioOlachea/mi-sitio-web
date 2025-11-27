@@ -24,7 +24,7 @@ class CarretesController {
         $carretesData = null;
 
         if($id) {
-            $carretes = new Carretes(getPDO());
+            $carretes = new Producto(getPDO());
             $carretesData = $carretes->find($id);
         }
 
@@ -32,7 +32,7 @@ class CarretesController {
     }
 
     public function show($id) {
-        $carretesModel = new Producto(getPDO());
+        $carretes = new Producto(getPDO());
         $carretes = $carretesModel->find($id);
         return view('public/carretes/carretes.details', ['carretes' => $carretes]);
     }
@@ -43,12 +43,52 @@ class CarretesController {
 
         $imageName = uploadImage($files['image'], 'img');
 
-        $data['image'] = $imageName;
+        $data['imagen_url'] = $imageName;
 
         $carretes->insert($data);
 
-        return redirect('/admin/carretes');
+        header("Location: index.php?route=carretes");
 
+    }
+
+    public function update($id, $post, $files) {
+        $carretes = new Producto(getPDO());
+        $current = $carretes->find($id);
+
+        $imageName = $current->imagen_url;
+
+        if (!empty($files['image']['name'])) {
+            $newImage = uploadImage($files['image'], 'img');
+            if ($newImage) {
+                deleteImage('img', $current->imagen_url);
+                $imageName = $newImage;
+            }
+        }
+
+        $data = [
+            'id_producto' => $id,
+            'nombre' => $post['nombre'],
+            'descripcion' => $post['descripcion'],
+            'precio' => $post['precio'],
+            'stock' => $post['stock'],
+            'categoria' => $post['categoria'],
+            'imagen_url' => $imageName
+        ];
+
+        $carretes->update($data);
+
+        header("Location: index.php?route=carretes");
+        exit;    
+    }
+
+
+
+    public function delete($id)
+    {
+        $carretes = new Producto(getPDO());
+        $carretes->delete($id);
+
+        header("Location: index.php?route=carretes");
     }
     
 

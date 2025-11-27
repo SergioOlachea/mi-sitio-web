@@ -91,7 +91,7 @@ class Producto {
                 'precio' => $data['precio'],
                 'stock' => $data['stock'],
                 'categoria' => $data['categoria'],
-                'imagen_url' => $data['imagen_url'] 
+                'imagen_url' => $data['imagen_url'] ?? null
             ]);
 
         } catch (PDOException $e) {
@@ -110,7 +110,7 @@ class Producto {
                         stock = :stock,
                         categoria = :categoria,
                         imagen_url = :imagen_url 
-                    WHERE id_producto = :id";
+                    WHERE id_producto = :id_producto";
             
             $stmt = $this->pdo->prepare($sql);
 
@@ -121,7 +121,7 @@ class Producto {
                 'stock' => $data['stock'],
                 'categoria' => $data['categoria'],
                 'imagen_url' => $data['imagen_url'],
-                'id' => $data['id'] 
+                'id_producto' => $data['id_producto'] 
             ]);
 
         } catch (PDOException $e) {
