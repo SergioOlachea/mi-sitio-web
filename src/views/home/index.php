@@ -14,6 +14,13 @@ $srcPath = SRC_PATH;
 if (!defined('BASE_URL')) {
     define('BASE_URL', '/Yeyos_Baja_Fishing'); 
 }
+
+$bannerImages = [
+    'Captura de pantalla 2025-08-19 093249.png',
+    'Captura de pantalla 2025-08-19 093300.png',
+    'Captura de pantalla 2025-08-19 093531.png',
+    'Captura de pantalla 2025-08-19 093226.png'
+];
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +29,7 @@ if (!defined('BASE_URL')) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <title>Yeyo´s Baja Fishing</title>
 
@@ -34,10 +42,24 @@ if (!defined('BASE_URL')) {
     <div class="content max-w-7xl mx-auto py-6 px-4">
 
         <!-- Banner Promocional -->
-        <div class="carousel mb-8 rounded-lg overflow-hidden shadow-lg">
-            <div class="carousel-content">
-                <!-- CRÍTICO: Usamos $assetsPath para ruta ABSOLUTA -->
-                <img src="<?= $assetsPath ?>/img/Captura de pantalla 2025-08-19 093226.png" class="promo1 w-full h-auto object-cover" alt="Promoción">
+        <div class="mb-8 rounded-lg overflow-hidden shadow-lg relative group">
+            <div class="swiper myBannerCarousel w-full h-64 md:h-[500px]">
+                <div class="swiper-wrapper">
+                    <?php foreach ($bannerImages as $imageName): ?>
+                        <div class="swiper-slide">
+                            <img
+                                src="<?= $assetsPath ?>/img/<?= $imageName ?>"
+                                class="w-full h-full object-cover"
+                                alt="Promoción"
+                            >
+                            </div>
+                    <?php endforeach; ?>
+                </div>
+
+                <div class="swiper-pagination !bottom-4"></div>
+
+                <div class="swiper-button-next !hidden md:group-hover:!flex !text-white bg-black/30 p-6 rounded-full !w-12 !h-12 after:!text-2xl hover:bg-black/50 transition-all"></div>
+                <div class="swiper-button-prev !hidden md:group-hover:!flex !text-white bg-black/30 p-6 rounded-full !w-12 !h-12 after:!text-2xl hover:bg-black/50 transition-all"></div>
             </div>
         </div>
 
@@ -49,7 +71,7 @@ if (!defined('BASE_URL')) {
                 <div class="card-text font-semibold text-gray-800">Carretes</div>
             </a>
 
-            <a href="<?= $srcPath ?>señuelos" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+            <a href="<?= $srcPath ?>senuelos" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
                 <img src="<?= $assetsPath ?>/img/señiuelos.webp" alt="Señuelos" class="w-full h-32 object-cover mb-3 rounded-md">
                 <div class="card-text font-semibold text-gray-800">Señuelos</div>
             </a>
@@ -128,6 +150,37 @@ if (!defined('BASE_URL')) {
         </div>
 
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".myBannerCarousel", {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            loop: true,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            speed: 1000, 
+
+            autoplay: {
+                delay: 4000, 
+                disableOnInteraction: false, 
+            },
+
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
 
 </body>
 </html>

@@ -47,13 +47,32 @@ try {
     <section class="bg-gray-100 py-16">
         <div class="max-w-7xl mx-auto px-6">
 
-            <div class="flex flex-col md:flex-row justify-between items-center mb-12 border-b pb-4 border-gray-300">
-                <h1 class="text-3xl font-bold text-blue-800">Senuelos</h1>
+             <div class="relative w-full h-48 mb-12 rounded-xl overflow-hidden shadow-lg group">
+    
+                <img 
+                    src="<?= $assetsPath ?>/img/señiuelos.webp" 
+                    alt="Señuelos de pesca" 
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
 
-                <a href="index.php?route=admin/senuelos/create"
-                   class="mt-4 md:mt-0 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition flex items-center gap-2 shadow-md">
-                    Agregar Nuevo
-                </a>
+                <div class="absolute inset-0 bg-black/60"></div>
+
+                <div class="relative z-10 h-full flex flex-col md:flex-row justify-between items-center px-8">
+                    
+                    <h1 class="text-4xl font-bold text-white drop-shadow-md tracking-wide">
+                        Señuelos
+                    </h1>
+                    
+                    <a href="index.php?route=admin/senuelos/create"
+                    class="mt-4 md:mt-0 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition flex items-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        Agregar Nuevo
+                    </a>
+
+                </div>
             </div>
 
             <?php if (empty($senuelos)) : ?>
@@ -101,7 +120,7 @@ try {
 
                                     <a href="index.php?route=admin/senuelos/delete/<?= $senuelo->id ?>"
                                        class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition text-center font-medium"
-                                       onclick="return confirm('¿Estás seguro de que deseas eliminar este senuelo?');">
+                                       onclick="return confirm('¿Estás seguro de que deseas eliminar este señuelo?');">
                                         Eliminar
                                     </a>
                                 </div>
