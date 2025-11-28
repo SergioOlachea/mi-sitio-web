@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Producto;
 
-class CarretesController {
+class señuelosController {
 
     public function index() {
         $señuelosModel = new Producto(getPDO());
@@ -21,10 +21,10 @@ class CarretesController {
     }
 
     public function form($id = null) {
-        $carretesData = null;
+        $señuelosData = null;
 
         if($id) {
-            $señuelos = new Carretes(getPDO());
+            $señuelos = new Producto(getPDO());
             $señuelosData = $señuelos->find($id);
         }
 
@@ -32,9 +32,9 @@ class CarretesController {
     }
 
     public function show($id) {
-        $carretesModel = new Producto(getPDO());
+        $señuelos = new Producto(getPDO());
         $señuelos = $señuelosModel->find($id);
-        return view('public/carretes/carretes.details', ['señuelos' => $señuelos]);
+        return view('public/señuelos/señuelos.details', ['señuelos' => $señuelos]);
     }
 
     public function store($data, $files) {
@@ -43,12 +43,52 @@ class CarretesController {
 
         $imageName = uploadImage($files['image'], 'img');
 
-        $data['image'] = $imageName;
+        $data['imagen_url'] = $imageName;
 
         $señuelos->insert($data);
 
-        return redirect('/admin/señuelos');
+        header("Location: index.php?route=señuelos");
 
+    }
+
+    public function update($id, $post, $files) {
+        $señuelos = new Producto(getPDO());
+        $current = $señuelos->find($id);
+
+        $imageName = $current->imagen_url;
+
+        if (!empty($files['image']['name'])) {
+            $newImage = uploadImage($files['image'], 'img');
+            if ($newImage) {
+                deleteImage('img', $current->imagen_url);
+                $imageName = $newImage;
+            }
+        }
+
+        $data = [
+            'id_producto' => $id,
+            'nombre' => $post['nombre'],
+            'descripcion' => $post['descripcion'],
+            'precio' => $post['precio'],
+            'stock' => $post['stock'],
+            'categoria' => $post['categoria'],
+            'imagen_url' => $imageName
+        ];
+
+        $señuelos->update($data);
+
+        header("Location: index.php?route=señuelos");
+        exit;    
+    }
+
+
+
+    public function delete($id)
+    {
+        $señuelos = new Producto(getPDO());
+        $señuelos->delete($id);
+
+        header("Location: index.php?route=señuelos");
     }
     
 

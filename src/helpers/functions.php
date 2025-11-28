@@ -89,6 +89,24 @@ function getCarretes() {
     }
 }
 
+
+function getSeñuelos() {
+    $pdo = getPDO();
+
+    try {
+        $sql = "SELECT * FROM producto WHERE categoria = 'señuelos'";
+
+        $stmt = $pdo->query($sql);
+
+        $señuelos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $señuelos;
+    }catch (PDOException $e) {
+        error_log("Error al consultar la base de datoso: ". $e->getMessage());
+        return [];
+    }
+}
+
 function view($template, $data = [])
 {
     // Convierte cada clave del array en una variable
