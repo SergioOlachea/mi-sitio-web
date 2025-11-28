@@ -90,17 +90,17 @@ function getCarretes() {
 }
 
 
-function getSeñuelos() {
+function getSenuelos() {
     $pdo = getPDO();
 
     try {
-        $sql = "SELECT * FROM producto WHERE categoria = 'señuelos'";
+        $sql = "SELECT * FROM producto WHERE categoria = 'senuelo'";
 
         $stmt = $pdo->query($sql);
 
-        $señuelos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $senuelos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        return $señuelos;
+        return $senuelos;
     }catch (PDOException $e) {
         error_log("Error al consultar la base de datoso: ". $e->getMessage());
         return [];

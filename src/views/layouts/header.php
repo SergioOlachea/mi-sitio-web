@@ -67,7 +67,7 @@ if (!defined('BASE_URL')) {
                     <li><a href="<?= $srcPath ?>pedidos.html" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Pedidos</a></li>
                     <li><a href="<?= $srcPath ?>cañas.html" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Cañas</a></li>
                     <li><a href="<?= $srcPath ?>carretes" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Carretes</a></li>
-                    <li><a href="<?= $srcPath ?>señuelos" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Señuelos</a></li>
+                    <li><a href="<?= $srcPath ?>senuelos" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Señuelos</a></li>
                 </ul>
 
                 <div class="busqueda mt-4 md:mt-0 md:ml-6 flex items-center border border-gray-300 rounded-lg overflow-hidden">
