@@ -64,8 +64,8 @@ if (!defined('BASE_URL')) {
                 <ul class="menu_ul flex flex-col md:flex-row md:space-x-6 space-y-2 md:space-y-0 text-gray-700 font-medium">
                     <!-- NUEVO: Opción de Inicio -->
                     <li><a href="<?= $srcPath ?>" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Inicio</a></li>
-                    <li><a href="<?= $srcPath ?>pedidos.html" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Pedidos</a></li>
-                    <li><a href="<?= $srcPath ?>cañas.html" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Cañas</a></li>
+                    <li><a href="<?= $srcPath ?>accesorios" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Pedidos</a></li>
+                    <li><a href="<?= $srcPath ?>canas" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Cañas</a></li>
                     <li><a href="<?= $srcPath ?>carretes" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Carretes</a></li>
                     <li><a href="<?= $srcPath ?>senuelos" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Señuelos</a></li>
                 </ul>

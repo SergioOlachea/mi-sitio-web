@@ -1,7 +1,7 @@
 <div class="flex justify-center mt-10">
     <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-lg">
         <h2 class="text-2xl font-bold text-center mb-6">
-            <?= isset($señuelos) ? 'Editar Carrete' : 'Agregar Nuevo señuelos' ?>
+            <?= isset($señuelos) ? 'Editar Señuelo' : 'Agregar Nuevo señuelo' ?>
         </h2>
 
         <form action="<?= isset($señuelos) ? 'index.php?route=admin/carretes/edit/'.$señuelos->id : 'index.php?route=admin/carretes/create' ?>" 

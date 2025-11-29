@@ -15,6 +15,7 @@ if (!defined('BASE_URL')) {
     define('BASE_URL', '/Yeyos_Baja_Fishing'); 
 }
 
+
 $bannerImages = [
     'Captura de pantalla 2025-08-19 093249.png',
     'Captura de pantalla 2025-08-19 093300.png',
@@ -66,24 +67,24 @@ $bannerImages = [
         <!-- Cards de Categorías Principales -->
         <div class="cards-content grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
             
-            <a href="<?= $srcPath ?>carretes" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+            <a href="<?= BASE_URL ?>/admin/carretes" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
                 <img src="<?= $assetsPath ?>/img/carretes.jpg" alt="Carretes" class="w-full h-32 object-cover mb-3 rounded-md">
-                <div class="card-text font-semibold text-gray-800">Carretes</div>
+                <div class="card-text font-semibold text-gray-800">Administrar Carretes</div>
             </a>
 
-            <a href="<?= $srcPath ?>senuelos" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+            <a href="<?= BASE_URL ?>/admin/senuelos" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
                 <img src="<?= $assetsPath ?>/img/señiuelos.webp" alt="Señuelos" class="w-full h-32 object-cover mb-3 rounded-md">
-                <div class="card-text font-semibold text-gray-800">Señuelos</div>
+                <div class="card-text font-semibold text-gray-800">Administrar Señuelos</div>
             </a>
 
-            <a href="<?= $srcPath ?>canas" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+            <a href="<?= BASE_URL ?>/admin/canas" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
                 <img src="<?= $assetsPath ?>/img/cañas.webp" alt="Cañas" class="w-full h-32 object-cover mb-3 rounded-md">
-                <div class="card-text font-semibold text-gray-800">Cañas</div>
+                <div class="card-text font-semibold text-gray-800">Administrar Cañas</div>
             </a>
 
-            <a href="<?= $srcPath ?>accesorios" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
+            <a href="<?= BASE_URL ?>/admin/accesorios" class="card bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 text-center">
                 <img src="<?= $assetsPath ?>/img/OIP.webp" alt="Accesorios" class="w-full h-32 object-cover mb-3 rounded-md">
-                <div class="card-text font-semibold text-gray-800">Accesorios</div>
+                <div class="card-text font-semibold text-gray-800">Administrar Accesorios</div>
             </a>
 
         </div>

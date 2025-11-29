@@ -72,6 +72,18 @@ function getContactInfo() {
     ];
 }
 
+function viewWithoutLayout($template, $data = [])
+{
+    // Convierte cada clave del array en una variable
+    extract($data);
+
+    // Rutas absolutas
+    $viewsPath = __DIR__ . '/../views/';
+
+    // Vista solicitada
+    require $viewsPath . $template . '.php';
+}
+
 function getCarretes() {
     $pdo = getPDO();
 
@@ -106,6 +118,41 @@ function getSenuelos() {
         return [];
     }
 }
+
+function getCanas() {
+    $pdo = getPDO();
+
+    try {
+        $sql = "SELECT * FROM producto WHERE categoria = 'canas'";
+
+        $stmt = $pdo->query($sql);
+
+        $senuelos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $senuelos;
+    }catch (PDOException $e) {
+        error_log("Error al consultar la base de datoso: ". $e->getMessage());
+        return [];
+    }
+}
+
+function getAccesorios() {
+    $pdo = getPDO();
+
+    try {
+        $sql = "SELECT * FROM producto WHERE categoria = 'accesorios'";
+
+        $stmt = $pdo->query($sql);
+
+        $accesorios = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $accesorios;
+    }catch (PDOException $e) {
+        error_log("Error al consultar la base de datoso: ". $e->getMessage());
+        return [];
+    }
+}
+
 
 function view($template, $data = [])
 {
@@ -157,6 +204,17 @@ function uploadImage($file, $folder) {
     move_uploaded_file($tmpPath, $uploadDir . $imageName);
 
     return $imageName;
+}
+
+
+function isAuthenticated() {
+    return isset($_SESSION['user_id']);
+}
+
+function requireAuth() {
+    if(!isAuthenticated()) {
+        header("Location: ".BASE_PATH."/login");
+    }
 }
 
 ?>
