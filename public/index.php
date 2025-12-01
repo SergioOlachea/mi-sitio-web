@@ -46,7 +46,7 @@
     }
 
     if($route === 'logout') {
-    return (new AuthController())->logout();
+             return (new AuthController())->logout();
     }
 
     /* 

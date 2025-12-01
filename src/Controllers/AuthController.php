@@ -23,36 +23,36 @@ public function index()
     public function attemptLogin($email, $password)
     {
         $user = $this->findUserByEmail($email);
+
+        // Validación de credenciales
         if (!$user || $password !== $user['contrasena']) {
-        return viewWithoutLayout('Auth/login', ['error' => 'Credenciales incorrectas']);
+            return viewWithoutLayout('Auth/login', ['error' => 'Credenciales incorrectas']);
         }
 
-
-
-    
-
+        // Guardar sesión
         $_SESSION['user_id'] = $user['id_usuario'];
         $_SESSION['user_email'] = $user['email'];
         $_SESSION['tipo'] = $user['tipo'];
 
+        // Redirecciones correctas
         if ($user['tipo'] === 'admin') {
-            // redirect('admin/home');
-                        return view('home/index');
-
+            redirect('admin/home');
             exit;
-            
         }
 
-        redirect('/');
+        // Usuario normal → home
+        redirect('home');
         exit;
     }
 
 
+
     public function logout()
     {
+    if (session_status() === PHP_SESSION_NONE) {
         session_start();
-
-        // Eliminar todas las variables de sesión
+    }
+        // Eliminar todas las variables de sesión   
         $_SESSION = [];
 
         // Destruir la sesión

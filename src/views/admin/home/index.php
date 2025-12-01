@@ -1,3 +1,4 @@
+home admin
 <?php
 if (!defined('ASSETS_PATH')) {
     define('ASSETS_PATH', '/assets'); 

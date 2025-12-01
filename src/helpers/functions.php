@@ -210,8 +210,11 @@ function uploadImage($file, $folder) {
 
 
 function isAuthenticated() {
-    return isset($_SESSION['id_usuario']);
+    // return isset($_SESSION['user_id']);
+        return isset($_SESSION['id_usuario']);
+
 }
+
 
 function requireAuth() {
     if(!isAuthenticated()) {

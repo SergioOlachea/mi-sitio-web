@@ -51,20 +51,36 @@ if (!defined('BASE_URL')) {
                 <label for="despleg_menu" class="menu md:hidden cursor-pointer p-2 rounded-lg hover:bg-gray-100 transition-colors">
                     <img src="<?= $assetsPath ?>/img/menu.png" class="icon-menu h-6 w-6" alt="Menú">
                 </label>
-
-                <div class="user-container">
-                    <a href="<?= $srcPath ?>login" class="flex items-center text-gray-700 hover:text-blue-600 transition-colors group">
-                        <img src="<?= $assetsPath ?>/img/icons8-usuario-50.png" alt="Usuario" class="user-icon h-6 w-6 group-hover:opacity-80">
-                        <span class="ml-2 text-sm font-medium hidden lg:inline">Registrarse / Iniciar sesión</span>
+            <div class="user-container">
+                <?php if(isAuthenticated()): ?>
+                    <a href="<?= $srcPath ?>logout" 
+                    class="flex items-center text-gray-700 hover:text-blue-600 transition-colors group">
+                        <img src="<?= $assetsPath ?>/img/icons8-usuario-50.png" 
+                            alt="Usuario" 
+                            class="user-icon h-6 w-6 group-hover:opacity-80">
+                        
+                        <span class="ml-2 text-sm font-medium hidden lg:inline">Iniciar sesión</span>
                     </a>
-                </div>
+
+                <?php else: ?>
+                    <a href="<?= $srcPath ?>login" 
+                    class="flex items-center text-gray-700 hover:text-blue-600 transition-colors group">
+                        <img src="<?= $assetsPath ?>/img/icons8-usuario-50.png" 
+                            alt="Usuario" 
+                            class="user-icon h-6 w-6 group-hover:opacity-80">
+
+                        <span class="ml-2 text-sm font-medium hidden lg:inline">Cerrar sesión</span>
+                    </a>
+
+                <?php endif; ?>
+            </div>
             </div>
 
             <nav class="nav_menu w-full md:w-auto mt-4 md:mt-0 md:flex md:flex-grow md:items-center">
                 <ul class="menu_ul flex flex-col md:flex-row md:space-x-6 space-y-2 md:space-y-0 text-gray-700 font-medium">
                     <!-- NUEVO: Opción de Inicio -->
                     <li><a href="<?= $srcPath ?>" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Inicio</a></li>
-                    <li><a href="<?= $srcPath ?>accesorios" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Pedidos</a></li>
+                    <li><a href="<?= $srcPath ?>accesorios" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Accesorios</a></li>
                     <li><a href="<?= $srcPath ?>canas" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Cañas</a></li>
                     <li><a href="<?= $srcPath ?>carretes" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Carretes</a></li>
                     <li><a href="<?= $srcPath ?>senuelos" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Señuelos</a></li>
