@@ -53,7 +53,7 @@ if (!defined('BASE_URL')) {
                 </label>
 
                 <div class="user-container">
-                    <a href="<?= $srcPath ?>Formulario.html" class="flex items-center text-gray-700 hover:text-blue-600 transition-colors group">
+                    <a href="<?= $srcPath ?>login" class="flex items-center text-gray-700 hover:text-blue-600 transition-colors group">
                         <img src="<?= $assetsPath ?>/img/icons8-usuario-50.png" alt="Usuario" class="user-icon h-6 w-6 group-hover:opacity-80">
                         <span class="ml-2 text-sm font-medium hidden lg:inline">Registrarse / Iniciar sesión</span>
                     </a>

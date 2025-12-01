@@ -15,33 +15,38 @@ public function index()
 
     public function findUserByEmail($email)
     {
-        $stmt = getPDO()->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt = getPDO()->prepare("SELECT * FROM usuario WHERE email = ?");
         $stmt->execute([$email]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-   public function attemptLogin($email, $password)
+    public function attemptLogin($email, $password)
     {
-        // 1. Buscamos al usuario
         $user = $this->findUserByEmail($email);
-
-        // 2. Verificamos contraseña
-        if (!$user || !password_verify($password, $user['password'])) {
-            return viewWithoutLayout('auth/login', ['error' => 'Credenciales incorrectas']);
+        if (!$user || $password !== $user['contrasena']) {
+        return viewWithoutLayout('Auth/login', ['error' => 'Credenciales incorrectas']);
         }
 
-        $_SESSION['user_id'] = $user['id'];
+
+
+    
+
+        $_SESSION['user_id'] = $user['id_usuario'];
         $_SESSION['user_email'] = $user['email'];
-        
-        $_SESSION['tipo'] = $user['tipo']; 
+        $_SESSION['tipo'] = $user['tipo'];
 
-        // 4. REDIRECCIÓN SEGÚN ROL
         if ($user['tipo'] === 'admin') {
-            redirect('admin/home'); 
-        } else {
-            redirect('/'); 
+            // redirect('admin/home');
+                        return view('home/index');
+
+            exit;
+            
         }
+
+        redirect('/');
+        exit;
     }
+
 
     public function logout()
     {
@@ -56,4 +61,6 @@ public function index()
         // Redirigir al login
         redirect('login');
     }
+
+    // password_hash($password, PASSWORD_DEFAULT);
 }

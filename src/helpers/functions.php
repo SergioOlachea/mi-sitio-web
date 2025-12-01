@@ -3,7 +3,7 @@
 require __DIR__.'/../config/database.php';
 $config = require __DIR__ . '/../config/config.php';
 // Constantes para rutas absolutas del sistema
-define('BASE_PATH', $config['base_url']);        // http://localhost/yeyos_fishing/
+define('BASE_PATH', rtrim($config['base_url'], '/'));       // http://localhost/yeyos_fishing/
 define('ASSETS_URL', $config['assets_url']);     // http://localhost/yeyos_fishing/public/assets/img/
 
 function getCategorias() {
@@ -173,10 +173,12 @@ function view($template, $data = [])
     require $layoutPath . 'footer.php';
 }
 
-function redirect($path) {
-    header('Location: '.BASE_PATH.'/'.$path);
-    exit;
-}
+    function redirect($path) {
+        $url = BASE_PATH . '/' . ltrim($path, '/');
+        header("Location: $url");
+        exit;
+    }
+
 
 function uploadImage($file, $folder) {
     // Si no hay archivo o hubo error, no guardar nada
@@ -208,12 +210,12 @@ function uploadImage($file, $folder) {
 
 
 function isAuthenticated() {
-    return isset($_SESSION['user_id']);
+    return isset($_SESSION['id_usuario']);
 }
 
 function requireAuth() {
     if(!isAuthenticated()) {
-        header("Location: ".BASE_PATH."/login");
+        redirect('login');
     }
 }
 

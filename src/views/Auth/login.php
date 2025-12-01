@@ -9,7 +9,7 @@
 
 <body class="bg-[url('/public/assets/img/67c7a14841e2e1e2456bae97ec293a07.jpg')] bg-cover bg-center bg-no-repeat bg-fixed min-h-screen flex items-center justify-center font-sans p-4">
 
-    <form action="/public/index.php" method="get" class="w-full max-w-lg p-8 bg-white/50 rounded-[10px] shadow-lg hover:shadow-2xl transition-all duration-500">
+    <form action="/public/index.php?route=login" method="POST" class="w-full max-w-lg p-8 bg-white/50 rounded-[10px] shadow-lg hover:shadow-2xl transition-all duration-500">
         
         <h1 class="text-3xl font-bold text-center mb-6 text-gray-900">Iniciar sesión</h1>
 
