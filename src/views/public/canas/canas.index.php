@@ -58,15 +58,7 @@ try {
                         Cañas
                     </h1>
                     
-                    <!-- <a href="index.php?route=admin/cañas/create"
-                    class="px-4 py-2 font-medium text-green-500 border border-green-500 rounded-md hover:bg-green-500 hover:text-gray-900 transition-colors duration-300">
-                        
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                        </svg>
-                        Agregar Nuevo
-                    </a> -->
-
-                </div>
+                    </div>
             </div>
 
             <?php if (empty($canas)) : ?>
@@ -99,19 +91,20 @@ try {
                                 
                                 <p class="text-lg font-bold text-gray-800 mt-2 mb-4">$<?= number_format($cana->precio, 2) ?></p>
 
-                                <div class="flex gap-3 mt-4">
-                                <a href="index.php?route=admin/canas/edit/<?= $cana->id?>"
-                                class="px-4 py-2 font-medium text-yellow-400 border border-yellow-400 rounded-md hover:bg-yellow-400 hover:text-gray-900 transition-colors duration-300">
-                                    Ver
-                                </a>
-                                <a href="index.php?route=admin/canas/delete/<?= $cana->id?>"
-                                class="px-4 py-2 font-medium text-red-500 border border-red-500 rounded-md hover:bg-red-500 hover:text-gray-900 transition-colors duration-300"
-                                onclick="return confirm('¿Estás seguro de que deseas eliminar este caña?');">
-                                    Comprar
-                                </a>
+                                <div class="flex flex-col gap-3 mt-4 w-full">
+                                    
+                                    <a href="index.php?route=canas/detalle&id=<?= $cana->id?>"
+                                       class="w-full text-center px-4 py-2 font-medium text-blue-600 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-300">
+                                        Ver detalles
+                                    </a>
+
+                                    <a href="index.php?route=cart/add&id=<?= $cana->id?>"
+                                       class="w-full text-center px-4 py-2 font-medium bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors duration-300">
+                                        Agregar al carrito
+                                    </a>
 
                                 </div>
-                            </div>
+                                </div>
                         </div>
                     <?php endforeach; ?>
                 </div>

@@ -55,17 +55,14 @@ if (!defined('BASE_URL')) {
                 <?php if(isAuthenticated()): ?>
                     <div class="flex items-center space-x-3">
                         
-                        <!-- Mostrar nombre del usuario -->
                         <span class="text-gray-700 font-medium hidden md:inline">
                             Hola, <?= htmlspecialchars(currentUser()['nombre']) ?>
                         </span>
 
-                        <!-- Icono -->
                         <img src="<?= $assetsPath ?>/img/icons8-usuario-50.png" 
                             alt="Usuario" 
                             class="user-icon h-6 w-6">
 
-                        <!-- Cerrar sesión -->
                         <a href="<?= $srcPath ?>logout" 
                         class="ml-2 text-sm font-medium text-red-600 hover:text-red-700 transition-colors">
                         Cerrar sesión
