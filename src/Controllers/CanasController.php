@@ -28,13 +28,25 @@ class CanasController {
             $canasData = $canas->find($id);
         }
 
-        return view('admin/canas/form', ['canas' => $canasData]);
+        return view('admin/canas/canasForm', ['canas' => $canasData]);
     }
 
     public function show($id) {
-        $canas = new Producto(getPDO());
-        $canas = $canasModel->find($id);
-        return view('public/canas/canas.details', ['canas' => $canas]);
+
+        if(!$id) {
+            die("Error: No se recibió un ID válido.");
+        }
+
+        $canasModel = new Producto(getPDO());
+        $cana = $canasModel->find($id);
+
+        if(!$cana) {
+            die("Error: No se encontró el carrete.");
+        }
+
+        return view('public/canas/canas.details', [
+            'cana' => $cana
+        ]);
     }
 
     public function store($data, $files) {

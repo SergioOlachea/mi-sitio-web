@@ -9,14 +9,12 @@ class CarretesController {
     public function index() {
         $carretesModel = new Producto(getPDO());
         $carretes = $carretesModel->all(); 
-        
         return view('public/carretes/carretes.index', ['carretes' => $carretes]);
     }
 
     public function adminIndex() {
         $carretesModel = new Producto(getPDO());
         $carretes = $carretesModel->all(); 
-        
         return view('admin/carretes/carretesAdm.index', ['carretes' => $carretes]);
     }
 
@@ -24,18 +22,30 @@ class CarretesController {
         $carretesData = null;
 
         if($id) {
-            $carretes = new Producto(getPDO());
-            $carretesData = $carretes->find($id);
+            $carretesModel = new Producto(getPDO());
+            $carretesData = $carretesModel->find($id);
         }
 
-        return view('admin/carretes/form', ['carretes' => $carretesData]);
+        return view('admin/carretes/carretesForm', ['carretes' => $carretesData]);
     }
-
     public function show($id) {
-        $carretes = new Producto(getPDO());
-        $carretes = $carretesModel->find($id);
-        return view('public/carretes/carretes.details', ['carretes' => $carretes]);
+
+        if(!$id) {
+            die("Error: No se recibió un ID válido.");
+        }
+
+        $carretesModel = new Producto(getPDO());
+        $carrete = $carretesModel->find($id);
+
+        if(!$carrete) {
+            die("Error: No se encontró el carrete.");
+        }
+
+        return view('public/carretes/carretes.details', [
+            'carrete' => $carrete
+        ]);
     }
+        
 
     public function store($data, $files) {
 

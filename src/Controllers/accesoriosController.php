@@ -28,13 +28,25 @@ class accesoriosController {
             $accesoriosData = $accesorios->find($id);
         }
 
-        return view('admin/accesorios/form', ['accesorios' => $accesoriosData]);
+        return view('admin/accesorios/accesoriosForm', ['accesorios' => $accesoriosData]);
     }
 
     public function show($id) {
-        $accesorios = new Producto(getPDO());
-        $accesorios = $accesoriosModel->find($id);
-        return view('public/accesorios/accesorios.details', ['accesorios' => $accesorios]);
+
+        if(!$id) {
+            die("Error: No se recibió un ID válido.");
+        }
+
+        $accesoriosModel = new Producto(getPDO());
+        $accesorio = $accesoriosModel->find($id);
+
+        if(!$accesorio) {
+            die("Error: No se encontró el accesorio.");
+        }
+
+        return view('public/accesorios/accesorios.details', [
+            'accesorio' => $accesorio
+        ]);
     }
 
     public function store($data, $files) {

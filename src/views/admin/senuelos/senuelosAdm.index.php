@@ -27,7 +27,7 @@ use App\Models\Producto;
 try {
     $pdo = getPDO();
     $productoModel = new Producto($pdo);
-    $senuelos = $productoModel->getByCategory('senuelo');
+    $senuelos = $productoModel->getByCategory('senuelos');
 } catch (Exception $e) {
     die("Error en la aplicación: " . $e->getMessage());
 }

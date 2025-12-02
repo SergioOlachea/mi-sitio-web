@@ -1,6 +1,8 @@
     <?php 
 
-
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     if(session_status() === PHP_SESSION_NONE){
     session_start();
     }
@@ -63,8 +65,8 @@
     }
 
     if (preg_match('#^carretes/(\d+)$#', $route, $matches) && $method === 'GET') {
-        $careerId = (int)$matches[1];
-        return (new CarretesController())->show($careerId);
+        $carreteId = (int)$matches[1];
+        return (new CarretesController())->show($carreteId);
     }
 
     // if ($route === 'admin/carretes') {
@@ -104,9 +106,12 @@
         return (new SenuelosController())->index();
     }
 
-    // if ($route === 'admin/senuelos') {
-    //     return (new SenuelosController())->adminIndex();
-    // }
+    if (preg_match('#^senuelos/(\d+)$#', $route, $matches) && $method === 'GET') {
+        $senueloId = (int)$matches[1];
+        return (new SenuelosController())->show($senueloId);
+
+    }
+
 
     if ($route === 'admin/senuelos/create') {
 
@@ -145,11 +150,6 @@
    
     }
 
-
-    // if ($route === 'admin/canas') {
-    //     return (new CanasController())->adminIndex();
-    // }
-
     if ($route === 'admin/canas/create') {
 
         if ($method === 'POST') {
@@ -158,6 +158,13 @@
 
         return (new CanasController())->form();
     }
+
+    if (preg_match('#^canas/(\d+)$#', $route, $matches) && $method === 'GET') {
+        $canasId = (int)$matches[1];
+        return (new CanasController())->show($canasId);
+
+    }
+
 
     if (preg_match('#^admin/canas/edit/(\d+)$#', $route, $matches)) {
 
@@ -185,10 +192,13 @@
 
         return (new accesoriosController())->index(); 
     }
+    if (preg_match('#^accesorios/(\d+)$#', $route, $matches) && $method === 'GET') {
+        $accesorioId = (int)$matches[1];
+        return (new accesoriosController())->show($accesorioId);
 
-    // if ($route === 'admin/accesorios') {
-    //     return (new accesoriosController())->adminIndex();
-    // }
+    }
+
+
 
     if ($route === 'admin/accesorios/create') {
 
@@ -211,8 +221,8 @@
     }
 
     if (preg_match('#^admin/accesorios/delete/(\d+)$#', $route, $matches)) {
-        $senueloId = (int)$matches[1];
-        return (new accesoriosController())->delete($senueloId);
+        $accesorioId = (int)$matches[1];
+        return (new accesoriosController())->delete($accesorioId);
     }
 
     http_response_code(404);

@@ -2,8 +2,8 @@
 $assetsPath = defined('ASSETS_PATH') ? ASSETS_PATH : '/public/assets';
 $srcPath = defined('SRC_PATH') ? SRC_PATH : '/src';
 
-// $carrete ya viene del controlador
-if (!$carrete) {
+// $cana ya viene del controlador
+if (!$cana) {
     die("Error: No se cargó el producto.");
 }
 
@@ -17,7 +17,7 @@ $assetsPath = defined('ASSETS_PATH') ? ASSETS_PATH : '/public/assets';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?= $assetsPath ?>/output.css" rel="stylesheet">
     <link href="<?= $assetsPath ?>/Styles.css" rel="stylesheet">
-    <title><?= htmlspecialchars($carrete->nombre) ?></title>
+    <title><?= htmlspecialchars($cana->nombre) ?></title>
 </head>
 
 <body class="bg-gray-100 text-[var(--text-color)]">
@@ -30,11 +30,11 @@ $assetsPath = defined('ASSETS_PATH') ? ASSETS_PATH : '/public/assets';
             <!-- IMAGEN -->
             <div>
                 <?php 
-                    $imageUrl = $carrete->imagen_url ? $carrete->imagen_url : 'placeholder_carrete.jpg';
+                    $imageUrl = $cana->imagen_url ? $cana->imagen_url : 'placeholder_cana.jpg';
                     $imagePath = $assetsPath . '/img/' . $imageUrl;
                 ?>
                 <img src="<?= $imagePath ?>" 
-                     alt="<?= htmlspecialchars($carrete->nombre) ?>" 
+                     alt="<?= htmlspecialchars($cana->nombre) ?>" 
                      class="rounded-xl shadow-md w-full h-96 object-cover">
             </div>
 
@@ -43,27 +43,27 @@ $assetsPath = defined('ASSETS_PATH') ? ASSETS_PATH : '/public/assets';
 
                 <div>
                     <h1 class="text-3xl font-bold mb-4 text-gray-900">
-                        <?= htmlspecialchars($carrete->nombre) ?>
+                        <?= htmlspecialchars($cana->nombre) ?>
                     </h1>
 
                     <p class="text-gray-700 text-lg mb-6">
-                        <?= htmlspecialchars($carrete->descripcion) ?>
+                        <?= htmlspecialchars($cana->descripcion) ?>
                     </p>
 
                     <p class="text-3xl font-bold text-green-600 mb-6">
-                        $<?= number_format($carrete->precio, 2) ?>
+                        $<?= number_format($cana->precio, 2) ?>
                     </p>
                 </div>
 
                 <!-- BOTONES -->
                 <div class="flex flex-col gap-4 mt-4">
 
-                    <a href="index.php?route=cart/add&id=<?= $carrete->id ?>"
+                    <a href="index.php?route=cart/add&id=<?= $cana->id ?>"
                        class="w-full text-center px-4 py-3 font-medium bg-green-600 text-white rounded-md hover:bg-green-700 transition">
                         Agregar al carrito
                     </a>
 
-                    <a href="index.php?route=carretes"
+                    <a href="index.php?route=canas"
                        class="w-full text-center px-4 py-3 font-medium text-gray-700 border border-gray-400 rounded-md hover:bg-gray-200 transition">
                         Regresar
                     </a>

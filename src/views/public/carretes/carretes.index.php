@@ -97,7 +97,7 @@ try {
                                 <div class="flex flex-col gap-3 mt-4 w-full">
                                     
                                     <!-- Botón Ver Detalles (Secundario) -->
-                                    <a href="index.php?route=carretes/detalle&id=<?= $carrete->id?>"
+                                    <a href="index.php?route=carretes/<?= $carrete->id ?>"
                                        class="w-full text-center px-4 py-2 font-medium text-blue-600 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-300">
                                         Ver detalles
                                     </a>

@@ -106,7 +106,7 @@ function getSenuelos() {
     $pdo = getPDO();
 
     try {
-        $sql = "SELECT * FROM producto WHERE categoria = 'senuelo'";
+        $sql = "SELECT * FROM producto WHERE categoria = 'senuelos'";
 
         $stmt = $pdo->query($sql);
 

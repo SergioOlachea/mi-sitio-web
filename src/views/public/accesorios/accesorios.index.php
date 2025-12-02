@@ -33,7 +33,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?= (defined('ASSETS_PATH') ? ASSETS_PATH : '') ?>/output.css" rel="stylesheet"> 
     <link href="<?= (defined('ASSETS_PATH') ? ASSETS_PATH : '') ?>/Styles.css" rel="stylesheet"> 
-    <title>Accesorios</title>
+    <title>accesorios</title>
 </head>
 
 <body class="bg-gray-100 text-[var(--text-color)]">
@@ -58,7 +58,9 @@ try {
                         Accesorios
                     </h1>
                     
-                    </div>
+                    <!-- Botón "Agregar Nuevo" eliminado -->
+
+                </div>
             </div>
 
             <?php if (empty($accesorios)) : ?>
@@ -72,7 +74,7 @@ try {
                         <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition flex flex-col h-full">
                             
                             <?php 
-                                $imageUrl = (isset($accesorio->imagen_url) && $accesorio->imagen_url) ? htmlspecialchars($accesorio->imagen_url) : 'placeholder_cana.jpg';
+                                $imageUrl = (isset($accesorio->imagen_url) && $accesorio->imagen_url) ? htmlspecialchars($accesorio->imagen_url) : 'placeholder_accesorio.jpg';
                                 $imagePath = (defined('ASSETS_PATH') ? ASSETS_PATH : '') . '/img/' . $imageUrl;
                             ?>
                             
@@ -91,20 +93,25 @@ try {
                                 
                                 <p class="text-lg font-bold text-gray-800 mt-2 mb-4">$<?= number_format($accesorio->precio, 2) ?></p>
 
+                                <!-- SECCIÓN DE BOTONES NUEVA -->
                                 <div class="flex flex-col gap-3 mt-4 w-full">
                                     
-                                    <a href="index.php?route=accesorios/detalle&id=<?= $accesorio->id?>"
+                                    <!-- Botón Ver Detalles (Secundario) -->
+                                    <a href="index.php?route=accesorios/<?= $accesorio->id ?>"
                                        class="w-full text-center px-4 py-2 font-medium text-blue-600 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-300">
                                         Ver detalles
                                     </a>
 
+                                    <!-- Botón Agregar al Carrito (Primario) -->
                                     <a href="index.php?route=cart/add&id=<?= $accesorio->id?>"
                                        class="w-full text-center px-4 py-2 font-medium bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors duration-300">
                                         Agregar al carrito
                                     </a>
 
                                 </div>
-                                </div>
+                                <!-- FIN SECCIÓN DE BOTONES -->
+
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>

@@ -8,13 +8,13 @@ class SenuelosController {
 
     public function index() {
         $senuelosModel = new Producto(getPDO());
-        $senuelos = $senuelosModel->getByCategory('senuelo');        
+        $senuelos = $senuelosModel->all(); 
         return view('public/senuelos/senuelos.index', ['senuelos' => $senuelos]);
     }
 
     public function adminIndex() {
         $senuelosModel = new Producto(getPDO());
-        $senuelos = $senuelosModel->getByCategory('senuelo');        
+        $senuelos = $senuelosModel->all(); 
         return view('admin/senuelos/senuelosAdm.index', ['senuelos' => $senuelos]);
     }
 
@@ -26,14 +26,25 @@ class SenuelosController {
             $senuelosData = $senuelos->find($id);
         }
 
-        return view('admin/senuelos/form', ['senuelos' => $senuelosData]);
+        return view('admin/senuelos/senuelosForm', ['senuelos' => $senuelosData]);
     }
 
     public function show($id) {
+
+        if(!$id) {
+            die("Error: No se recibió un ID válido.");
+        }
+
         $senuelosModel = new Producto(getPDO());
         $senuelo = $senuelosModel->find($id);
 
-        return view('public/senuelos/senuelos.details', ['senuelos' => $senuelo]);
+        if(!$senuelo) {
+            die("Error: No se encontró el carrete.");
+        }
+
+        return view('public/senuelos/senuelos.details', [
+            'senuelo' => $senuelo
+        ]);
     }
 
 
@@ -47,7 +58,7 @@ class SenuelosController {
 
         $senuelos->insert($data);
 
-        header("Location: index.php?route=admin/senuelos");
+        header("Location: index.php?route=senuelos");
 
     }
 
@@ -77,7 +88,7 @@ class SenuelosController {
 
         $senuelos->update($data);
 
-        header("Location: index.php?route=admin/senuelos");
+        header("Location: index.php?route=senuelos");
         exit;    
     }
 
@@ -88,7 +99,7 @@ class SenuelosController {
         $senuelos = new Producto(getPDO());
         $senuelos->delete($id);
 
-        header("Location: index.php?route=admin/senuelos");
+        header("Location: index.php?route=senuelos");
     }
     
 
