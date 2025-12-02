@@ -15,7 +15,7 @@ class SenuelosController {
     public function adminIndex() {
         $senuelosModel = new Producto(getPDO());
         $senuelos = $senuelosModel->getByCategory('senuelo');        
-        return view('admin/senuelos/index', ['senuelos' => $senuelos]);
+        return view('admin/senuelos/senuelosAdm.index', ['senuelos' => $senuelos]);
     }
 
     public function form($id = null) {

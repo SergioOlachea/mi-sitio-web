@@ -17,7 +17,7 @@ class accesoriosController {
         $accesoriosModel = new Producto(getPDO());
         $accesorios = $accesoriosModel->all(); 
         
-        return view('admin/accesorios/index', ['accesorios' => $accesorios]);
+        return view('admin/accesorios/accesoriosAdm.index', ['accesorios' => $accesorios]);
     }
 
     public function form($id = null) {

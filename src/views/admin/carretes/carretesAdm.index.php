@@ -42,15 +42,32 @@ try {
     <section class="bg-gray-100 py-16">
         <div class="max-w-7xl mx-auto px-6">
             
-            <div class="flex flex-col md:flex-row justify-between items-center mb-12 border-b pb-4 border-gray-300">
-                <h1 class="text-3xl font-bold text-blue-800">
-                    Carretes
-                </h1>
-                
-            <a href="index.php?route=admin/carretes/create"
-            class="mt-4 md:mt-0 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition flex items-center gap-2 shadow-md">
-                Agregar Nuevo
-            </a>
+
+             <div class="relative w-full h-48 mb-12 rounded-xl overflow-hidden shadow-lg group">
+    
+                <img 
+                    src="<?= $assetsPath ?>/img/carretes.jpg" 
+                    alt="Carretes de pesca" 
+                    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+
+                <div class="absolute inset-0 bg-black/60"></div>
+
+                <div class="relative z-10 h-full flex flex-col md:flex-row justify-between items-center px-8">
+                    
+                    <h1 class="text-4xl font-bold text-white drop-shadow-md tracking-wide">
+                        Carretes
+                    </h1>
+                    
+                    <a href="index.php?route=admin/carretes/create"
+                    class="px-4 py-2 font-medium text-green-500 border border-green-500 rounded-md hover:bg-green-500 hover:text-gray-900 transition-colors duration-300">
+                        
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        Agregar Nuevo
+                    </a>
+
+                </div>
             </div>
 
             <?php if (empty($carretes)) : ?>
@@ -85,11 +102,11 @@ try {
 
                                 <div class="flex gap-3 mt-4">
                                 <a href="index.php?route=admin/carretes/edit/<?= $carrete->id?>"
-                                class="flex-1 bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition text-center font-medium">
+                                class="px-4 py-2 font-medium text-yellow-400 border border-yellow-400 rounded-md hover:bg-yellow-400 hover:text-gray-900 transition-colors duration-300">
                                     Editar
                                 </a>
                                 <a href="index.php?route=admin/carretes/delete/<?= $carrete->id?>"
-                                class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition text-center font-medium "
+                                class="px-4 py-2 font-medium text-red-500 border border-red-500 rounded-md hover:bg-red-500 hover:text-gray-900 transition-colors duration-300"
                                 onclick="return confirm('¿Estás seguro de que deseas eliminar este carrete?');">
                                     Eliminar
                                 </a>

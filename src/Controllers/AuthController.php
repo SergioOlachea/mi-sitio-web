@@ -32,16 +32,18 @@ public function index()
         // Guardar sesión
         $_SESSION['user_id'] = $user['id_usuario'];
         $_SESSION['user_email'] = $user['email'];
+        $_SESSION['user_name'] = $user['nombre'];
         $_SESSION['tipo'] = $user['tipo'];
 
-        // Redirecciones correctas
-        if ($user['tipo'] === 'admin') {
-            redirect('admin/home');
-            exit;
-        }
+        $_SESSION['user'] = [
+                    'id_usuario' => $_SESSION['user_id'],
+                    'nombre' => $_SESSION['user_name'],
+                    'tipo' => $_SESSION['tipo']
+                ];
 
-        // Usuario normal → home
-        redirect('home');
+
+        return view('home/index');
+        
         exit;
     }
 
@@ -59,7 +61,7 @@ public function index()
         session_destroy();
 
         // Redirigir al login
-        redirect('login');
+        return view('home/index');
     }
 
     // password_hash($password, PASSWORD_DEFAULT);

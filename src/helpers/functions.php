@@ -208,18 +208,44 @@ function uploadImage($file, $folder) {
     return $imageName;
 }
 
-
-function isAuthenticated() {
-    // return isset($_SESSION['user_id']);
-        return isset($_SESSION['id_usuario']);
-
+function currentUser() {
+    return $_SESSION['user'] ?? null;
 }
 
+function isAuthenticated() {
+    return isset($_SESSION['user']);
+}
+
+function isAdmin() {
+    return isset($_SESSION['user']) && $_SESSION['user']['tipo'] === 'admin';
+}
 
 function requireAuth() {
     if(!isAuthenticated()) {
-        redirect('login');
+        header("Location: /login");
+        exit;
     }
 }
+
+function requireAdmin() {
+    if(!isAdmin()) {
+        header("Location: /"); // o /home
+        exit;
+    }
+}
+
+
+// function isAuthenticated() {
+//     // return isset($_SESSION['user_id']);
+//         return isset($_SESSION['id_usuario']);
+
+// }
+
+
+// function requireAuth() {
+//     if(!isAuthenticated()) {
+//         redirect('login');
+//     }
+// }
 
 ?>

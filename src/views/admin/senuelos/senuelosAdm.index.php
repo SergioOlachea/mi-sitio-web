@@ -63,7 +63,7 @@ try {
                         Señuelos
                     </h1>
                     
-                    <a href="index.php?route=admin/carretes/create"
+                    <a href="index.php?route=admin/senuelos/create"
                     class="px-4 py-2 font-medium text-green-500 border border-green-500 rounded-md hover:bg-green-500 hover:text-gray-900 transition-colors duration-300">
                         
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />

@@ -53,27 +53,39 @@ if (!defined('BASE_URL')) {
                 </label>
             <div class="user-container">
                 <?php if(isAuthenticated()): ?>
-                    <a href="<?= $srcPath ?>logout" 
-                    class="flex items-center text-gray-700 hover:text-blue-600 transition-colors group">
+                    <div class="flex items-center space-x-3">
+                        
+                        <!-- Mostrar nombre del usuario -->
+                        <span class="text-gray-700 font-medium hidden md:inline">
+                            Hola, <?= htmlspecialchars(currentUser()['nombre']) ?>
+                        </span>
+
+                        <!-- Icono -->
                         <img src="<?= $assetsPath ?>/img/icons8-usuario-50.png" 
                             alt="Usuario" 
-                            class="user-icon h-6 w-6 group-hover:opacity-80">
-                        
-                        <span class="ml-2 text-sm font-medium hidden lg:inline">Iniciar sesión</span>
-                    </a>
+                            class="user-icon h-6 w-6">
+
+                        <!-- Cerrar sesión -->
+                        <a href="<?= $srcPath ?>logout" 
+                        class="ml-2 text-sm font-medium text-red-600 hover:text-red-700 transition-colors">
+                        Cerrar sesión
+                        </a>
+                    </div>
 
                 <?php else: ?>
+
                     <a href="<?= $srcPath ?>login" 
                     class="flex items-center text-gray-700 hover:text-blue-600 transition-colors group">
                         <img src="<?= $assetsPath ?>/img/icons8-usuario-50.png" 
                             alt="Usuario" 
                             class="user-icon h-6 w-6 group-hover:opacity-80">
 
-                        <span class="ml-2 text-sm font-medium hidden lg:inline">Cerrar sesión</span>
+                        <span class="ml-2 text-sm font-medium hidden lg:inline">Iniciar sesión</span>
                     </a>
 
                 <?php endif; ?>
             </div>
+
             </div>
 
             <nav class="nav_menu w-full md:w-auto mt-4 md:mt-0 md:flex md:flex-grow md:items-center">

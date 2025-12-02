@@ -58,13 +58,13 @@ try {
                         Accesorios
                     </h1>
                     
-                    <a href="index.php?route=admin/accesorios/create"
+                    <!-- <a href="index.php?route=admin/accesorios/create"
                     class="px-4 py-2 font-medium text-green-500 border border-green-500 rounded-md hover:bg-green-500 hover:text-gray-900 transition-colors duration-300">
                         
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
                         Agregar Nuevo
-                    </a>
+                    </a> -->
 
                 </div>
             </div>
@@ -102,12 +102,12 @@ try {
                                 <div class="flex gap-3 mt-4">
                                 <a href="index.php?route=admin/accesorios/edit/<?= $accesorio->id?>"
                                 class="px-4 py-2 font-medium text-yellow-400 border border-yellow-400 rounded-md hover:bg-yellow-400 hover:text-gray-900 transition-colors duration-300">
-                                    Editar
+                                    Ver
                                 </a>
                                 <a href="index.php?route=admin/accesorios/delete/<?= $accesorio->id?>"
                                 class="px-4 py-2 font-medium text-red-500 border border-red-500 rounded-md hover:bg-red-500 hover:text-gray-900 transition-colors duration-300"
                                 onclick="return confirm('¿Estás seguro de que deseas eliminar este caña?');">
-                                    Eliminar
+                                    Comprar
                                 </a>
 
                                 </div>

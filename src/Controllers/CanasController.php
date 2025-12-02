@@ -17,7 +17,7 @@ class CanasController {
         $canasModel = new Producto(getPDO());
         $canas = $canasModel->all(); 
         
-        return view('admin/canas/index', ['canas' => $canas]);
+        return view('admin/canas/canasAdm.index', ['canas' => $canas]);
     }
 
     public function form($id = null) {

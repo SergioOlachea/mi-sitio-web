@@ -17,7 +17,7 @@ class CarretesController {
         $carretesModel = new Producto(getPDO());
         $carretes = $carretesModel->all(); 
         
-        return view('admin/carretes/index', ['carretes' => $carretes]);
+        return view('admin/carretes/carretesAdm.index', ['carretes' => $carretes]);
     }
 
     public function form($id = null) {

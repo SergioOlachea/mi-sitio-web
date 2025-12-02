@@ -5,6 +5,8 @@
     session_start();
     }
 
+
+
     require __DIR__ . '/../vendor/autoload.php';
     require __DIR__ . '/../src/helpers/functions.php';
 
@@ -14,15 +16,15 @@
     use App\Controllers\accesoriosController;
     use App\Controllers\AuthController;
 
-
+    $user = currentUser();
 
 
     // Obtener ruta limpia desde $_GET['route']
     $route = trim($_GET['route'] ?? '', '/');
     $method = $_SERVER['REQUEST_METHOD'];
 
-    if(str_starts_with($route, "admin/")) {
-        requireAuth();
+    if (str_starts_with($route, "admin/")) {
+        requireAdmin(); // SOLO ADMIN
     }
 
     if ($route === '' || $route === 'home') {
@@ -52,8 +54,11 @@
     /* 
             CARRETES PUBLIC
     */
-
     if ($route === 'carretes' && $method === 'GET') {
+        if (isAdmin()) {
+            return (new CarretesController())->adminIndex();
+        }
+
         return (new CarretesController())->index();
     }
 
@@ -62,16 +67,14 @@
         return (new CarretesController())->show($careerId);
     }
 
-    if ($route === 'admin/carretes') {
-        return (new CarretesController())->adminIndex();
-    }
+    // if ($route === 'admin/carretes') {
+    //     return (new CarretesController())->adminIndex();
+    // }
 
     if ($route === 'admin/carretes/create') {
-
         if ($method === 'POST') {
             return (new CarretesController())->store($_POST, $_FILES);
         }
-
         return (new CarretesController())->form();
     }
 
@@ -94,12 +97,16 @@
             SEÑUELOS / SENUELos
     */
     if ($route === 'senuelos' && $method === 'GET') {
+        if (isAdmin()) {
+            return (new SenuelosController())->adminIndex();
+        }
+
         return (new SenuelosController())->index();
     }
 
-    if ($route === 'admin/senuelos') {
-        return (new SenuelosController())->adminIndex();
-    }
+    // if ($route === 'admin/senuelos') {
+    //     return (new SenuelosController())->adminIndex();
+    // }
 
     if ($route === 'admin/senuelos/create') {
 
@@ -130,12 +137,18 @@
             CAÑAS / CANAS
     */
     if ($route === 'canas' && $method === 'GET') {
-        return (new CanasController())->index();
+        if (isAdmin()) {
+            return (new CanasController())->adminIndex();
+        }
+
+        return (new CanasController())->index(); 
+   
     }
 
-    if ($route === 'admin/canas') {
-        return (new CanasController())->adminIndex();
-    }
+
+    // if ($route === 'admin/canas') {
+    //     return (new CanasController())->adminIndex();
+    // }
 
     if ($route === 'admin/canas/create') {
 
@@ -166,12 +179,16 @@
             ACCESORIOS
     */
     if ($route === 'accesorios' && $method === 'GET') {
-        return (new accesoriosController())->index();
+        if (isAdmin()) {
+            return (new accesoriosController())->adminIndex();
+        }
+
+        return (new accesoriosController())->index(); 
     }
 
-    if ($route === 'admin/accesorios') {
-        return (new accesoriosController())->adminIndex();
-    }
+    // if ($route === 'admin/accesorios') {
+    //     return (new accesoriosController())->adminIndex();
+    // }
 
     if ($route === 'admin/accesorios/create') {
 
