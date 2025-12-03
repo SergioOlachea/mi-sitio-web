@@ -17,16 +17,17 @@
     use App\Controllers\CanasController;
     use App\Controllers\accesoriosController;
     use App\Controllers\AuthController;
+    use App\Controllers\CartController;
+
 
     $user = currentUser();
 
 
-    // Obtener ruta limpia desde $_GET['route']
     $route = trim($_GET['route'] ?? '', '/');
     $method = $_SERVER['REQUEST_METHOD'];
 
     if (str_starts_with($route, "admin/")) {
-        requireAdmin(); // SOLO ADMIN
+        requireAdmin(); 
     }
 
     if ($route === '' || $route === 'home') {
@@ -36,6 +37,35 @@
     if ($method === 'POST' && isset($_POST['_method'])) {
         $method = strtoupper($_POST['_method']);
     }
+
+    /* 
+        CART 
+    
+    */
+    if ($route === 'cart' && $method === 'GET') {
+        return (new CartController())->index();
+    }
+
+    if ($route === 'cart/add' && $method === 'GET') {
+        return (new CartController())->add($_GET['id'] ?? null);
+    }
+
+    if ($route === 'cart/remove' && $method === 'GET') {
+        return (new CartController())->remove($_GET['id'] ?? null);
+    }
+
+    if ($route === 'cart/update') {
+
+        $id = $_REQUEST['id'] ?? null;
+        $action = $_REQUEST['action'] ?? null;  
+
+        return (new CartController())->updateQty($id, $action);
+    }
+
+    if ($route === 'cart/clear' && $method === 'GET') {
+        return (new CartController())->clear();
+    }
+
 
     if($route === 'login') {
         if($method === 'POST') {
@@ -68,10 +98,6 @@
         $carreteId = (int)$matches[1];
         return (new CarretesController())->show($carreteId);
     }
-
-    // if ($route === 'admin/carretes') {
-    //     return (new CarretesController())->adminIndex();
-    // }
 
     if ($route === 'admin/carretes/create') {
         if ($method === 'POST') {

@@ -87,7 +87,6 @@ if (!defined('BASE_URL')) {
 
             <nav class="nav_menu w-full md:w-auto mt-4 md:mt-0 md:flex md:flex-grow md:items-center">
                 <ul class="menu_ul flex flex-col md:flex-row md:space-x-6 space-y-2 md:space-y-0 text-gray-700 font-medium">
-                    <!-- NUEVO: Opción de Inicio -->
                     <li><a href="<?= $srcPath ?>" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Inicio</a></li>
                     <li><a href="<?= $srcPath ?>accesorios" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Accesorios</a></li>
                     <li><a href="<?= $srcPath ?>canas" class="block p-2 hover:text-blue-600 transition-colors rounded-md">Cañas</a></li>
@@ -102,11 +101,13 @@ if (!defined('BASE_URL')) {
                     </div>
                 </div>
 
-                <div class="carrito-container mt-4 md:mt-0 md:ml-4">
-                    <div class="carrito cursor-pointer p-2 rounded-lg hover:bg-gray-100 transition-colors border border-transparent hover:border-gray-200">
-                        <img src="<?= $assetsPath ?>/img/carrito-de-compras.png" class="carrito-icon h-6 w-6" alt="Carrito">
-                    </div>
-                </div>
+            <div class="carrito-container mt-4 md:mt-0 md:ml-4">
+                <a href="/cart" class="carrito cursor-pointer p-2 rounded-lg hover:bg-gray-100 transition-colors border border-transparent hover:border-gray-200 block">
+                    <img src="<?= $assetsPath ?>/img/carrito-de-compras.png" 
+                        class="carrito-icon h-6 w-6" 
+                        alt="Carrito">
+                </a>
+            </div>
             </nav>
         </div>
 

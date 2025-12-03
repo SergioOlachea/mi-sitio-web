@@ -234,18 +234,4 @@ function requireAdmin() {
     }
 }
 
-
-// function isAuthenticated() {
-//     // return isset($_SESSION['user_id']);
-//         return isset($_SESSION['id_usuario']);
-
-// }
-
-
-// function requireAuth() {
-//     if(!isAuthenticated()) {
-//         redirect('login');
-//     }
-// }
-
 ?>

@@ -25,7 +25,10 @@ public function index()
         $user = $this->findUserByEmail($email);
 
         // Validación de credenciales
-        if (!$user || !password_verify($password, $user['contrasena'])) {
+        if (!$user || !password_verify($password, $user['contrasena'])) { // contraseña con hash
+                // if (!$user || $password !== $user['contrasena']) { // contraseña sin hash
+
+
             return viewWithoutLayout('Auth/login', ['error' => 'Credenciales incorrectas']);
         }
 
@@ -33,6 +36,9 @@ public function index()
         $_SESSION['user_id'] = $user['id_usuario'];
         $_SESSION['user_email'] = $user['email'];
         $_SESSION['user_name'] = $user['nombre'];
+        $_SESSION['tipo'] = $user['tipo'];
+
+
 
         $_SESSION['user'] = [
                     'id_usuario' => $_SESSION['user_id'],

@@ -58,8 +58,6 @@ try {
                         Carretes
                     </h1>
                     
-                    <!-- Botón "Agregar Nuevo" eliminado -->
-
                 </div>
             </div>
 
@@ -93,23 +91,19 @@ try {
                                 
                                 <p class="text-lg font-bold text-gray-800 mt-2 mb-4">$<?= number_format($carrete->precio, 2) ?></p>
 
-                                <!-- SECCIÓN DE BOTONES NUEVA -->
                                 <div class="flex flex-col gap-3 mt-4 w-full">
                                     
-                                    <!-- Botón Ver Detalles (Secundario) -->
                                     <a href="index.php?route=carretes/<?= $carrete->id ?>"
                                        class="w-full text-center px-4 py-2 font-medium text-blue-600 border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white transition-colors duration-300">
                                         Ver detalles
                                     </a>
 
-                                    <!-- Botón Agregar al Carrito (Primario) -->
                                     <a href="index.php?route=cart/add&id=<?= $carrete->id?>"
                                        class="w-full text-center px-4 py-2 font-medium bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors duration-300">
                                         Agregar al carrito
                                     </a>
 
                                 </div>
-                                <!-- FIN SECCIÓN DE BOTONES -->
 
                             </div>
                         </div>
