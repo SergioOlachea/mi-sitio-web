@@ -20,3 +20,5 @@ Marco Antonio Nuñez Muñoz
 
 1. [Index](/public/index.php).
 
+### Manual de usuario
+[manual de usuario](https://github.com/SergioOlachea/mi-sitio-web/blob/main/Manual%20de%20Usuario%20-%20Yeyos%20Baja%20Fishing.pdf)
