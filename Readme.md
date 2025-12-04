@@ -16,7 +16,7 @@ Sergio Mariano Olachea Cervantes
 Marco Antonio Nuñez Muñoz
 
 ### Sitio 
-[Yeyos Baja Fishing](https://anuies.net/yeyo_baja_fishing/public)
+[Yeyos Baja Fishing](https://anuies.net/yeyo_baja_fishing/public/)
 
 ### Código Fuente
 
