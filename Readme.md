@@ -1,6 +1,6 @@
 # Readme
 
- Repositorio para el proyecto de progrmacion web:
+ Repositorio para el proyecto de programación web:
  YEYOS BAJA FISHING
 
  <img width="1847" height="856" alt="image" src="https://github.com/user-attachments/assets/16b253be-97ff-4626-a4e8-b849924a4f21" />
@@ -18,5 +18,5 @@ Marco Antonio Nuñez Muñoz
 
 ### Proyecto
 
-1. [Ejercicio 1 - Include, require, archivo functions](/public/index.php).
+1. [Index](/public/index.php).
 
